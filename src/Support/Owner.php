@@ -31,8 +31,8 @@ final class Owner {
 			return;
 		}
 		$set = static function ( string $p ) use ( $to ): void {
-			@chown( $p, $to[0] );
-			@chgrp( $p, $to[1] );
+			@chown( $p, $to[0] ); // phpcs:ignore WordPress.WP.AlternativeFunctions.file_system_operations_chown
+			@chgrp( $p, $to[1] ); // phpcs:ignore WordPress.WP.AlternativeFunctions.file_system_operations_chgrp
 		};
 		$set( $root );
 		$it = new \RecursiveIteratorIterator( new \RecursiveDirectoryIterator( $root, \FilesystemIterator::SKIP_DOTS ), \RecursiveIteratorIterator::SELF_FIRST );
@@ -50,7 +50,7 @@ final class Owner {
 		if ( ! is_dir( $probe ) ) {
 			return sprintf( 'Cannot write to %s: %s is not a directory.', $dir, $probe );
 		}
-		if ( ! is_writable( $probe ) ) {
+		if ( ! is_writable( $probe ) ) { // phpcs:ignore WordPress.WP.AlternativeFunctions.file_system_operations_is_writable
 			return sprintf( 'Cannot write to %s: %s is not writable by this user (often left owned by root after activating as root). Fix: chown -R <web user>: %s', $dir, $probe, $probe );
 		}
 		return null;
