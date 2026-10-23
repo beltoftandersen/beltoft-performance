@@ -78,6 +78,8 @@ final class Compiler {
 			return false;
 		}
 
+		\BeltoftPerformance\Support\Owner::adopt_tree( $dir ); // run as root: keep the folder the web server's
+
 		// Invalidate opcode cache.
 		if ( function_exists( 'opcache_invalidate' ) ) {
 			opcache_invalidate( $file, true );

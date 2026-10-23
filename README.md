@@ -34,13 +34,16 @@ order received or account requires `--tested-by-hand`, unless the rule passed a 
 
 - WordPress with WooCommerce, PHP **8.3+**, WP-CLI.
 - For browser tests: Node.js with Playwright (`playwright-core` and a Chromium). Pass their paths with `--node` /
-  `--pw` if they aren't found automatically.
+  `--pw` if they aren't found automatically. The browser is found as: `--chrome=<path>`, then `BP_CHROME`, then Playwright's own
+  Chromium, then `/usr/bin/google-chrome`, `/usr/bin/chromium`, `/usr/bin/chromium-browser`; otherwise the test stops
+  with a message naming `--chrome=` and `BP_CHROME`.
 - The server must be able to fetch its own pages (the check requests them over HTTP).
 
 ## Setup
 
 1. Copy the plugin to `wp-content/plugins/beltoft-performance/` and activate it. Activation installs the loader into
-   `wp-content/mu-plugins/` (`Loader\LoaderManager`). Deactivating removes the loader again.
+   `wp-content/mu-plugins/` (`Loader\LoaderManager`). When activated or run as root (`--allow-root`), the plugin hands
+   `uploads/beltoft-performance` to the uploads folder's owner; `check` stops with a clear error if that folder isn't writable. Deactivating removes the loader again.
 2. Run a first check: `sudo -u www-data wp beltoft-performance check`.
 3. Review the proposals in *Settings › Performance*, or with `wp beltoft-performance status`.
 4. Test and accept rules one at a time (see Commands). Clear the page cache afterwards.
@@ -56,8 +59,8 @@ wp beltoft-performance rules                         # the accepted rules
 wp beltoft-performance check [--pages=<list>] [--states=<list>] [--new]
                                                      # check every page type, or only the listed ones
 wp beltoft-performance trial <target> [--pages=<list>]
-wp beltoft-performance browser <target> [--node=<path>] [--pw=<path>]
-wp beltoft-performance usage [--pages=<list>] [--states=<list>]
+wp beltoft-performance browser <target> [--node=<path>] [--pw=<path>] [--chrome=<path>]
+wp beltoft-performance usage [--pages=<list>] [--states=<list>] [--node=<path>] [--pw=<path>] [--chrome=<path>]
 wp beltoft-performance accept <target> --by=<login> [--pages=<list>]
 wp beltoft-performance reject <target>
 wp beltoft-performance switch-off <target> --scope=<scope>[,<scope>] --by=<login> [--tested-by-hand] [--override-protection]
@@ -83,8 +86,10 @@ Pure unit tests, no WordPress needed (`tests/bootstrap.php` stubs the few functi
 cd wp-content/plugins/beltoft-performance && php <path-to>/phpunit
 ```
 
+JS: `node --test tests/js`.
+
 The `bin/` scripts are the Playwright helpers the `browser` and `usage` commands run (`browser-check.js`,
-`cart-check.js`, `layout-key.js`). The signed check header reaches them through the environment
+`cart-check.js`, `layout-key.js`, plus `chrome-path.js`, the browser lookup). The signed check header reaches them through the environment
 (`BP_CHECK_HEADER`), never the command line.
 
 ## Troubleshooting
@@ -94,7 +99,8 @@ The `bin/` scripts are the Playwright helpers the `browser` and `usage` commands
 | A page breaks after accepting a rule | `wp beltoft-performance switch-on <target> --scope=<page type>`, or the kill switch, then purge the page cache |
 | `status` says the loader isn't installed | Reactivate the plugin; the loader file is copied from `mu/` |
 | Proposals include a plugin that's obviously needed | Reject it; check runs can miss rare states (a coupon, a logged-in-only widget) |
-| Browser test can't start | Node or Playwright not found: pass `--node=` and `--pw=` |
+| Browser test can't start | Node or Playwright not found: pass `--node=` and `--pw=`. No Chrome found: pass `--chrome=` or set `BP_CHROME` |
+| Check says the uploads folder isn't writable | `chown -R www-data: wp-content/uploads/beltoft-performance` |
 
 ## Authorship
 

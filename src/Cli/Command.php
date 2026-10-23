@@ -11,6 +11,7 @@ use BeltoftPerformance\Rules\Compiler;
 use BeltoftPerformance\Rules\PerfmattersImport;
 use BeltoftPerformance\Rules\Rule;
 use BeltoftPerformance\Rules\Store;
+use BeltoftPerformance\Support\Owner;
 
 defined( 'ABSPATH' ) || exit;
 
@@ -183,6 +184,10 @@ final class Command {
 		if ( $merge ) {
 			\WP_CLI::log( 'Re-checking ' . implode( ',', $pages ) . ' inside check ' . $id . ' (use --new for a fresh check of just these pages).' );
 		}
+		$dir_error = Owner::writable_error( wp_upload_dir()['basedir'] . '/beltoft-performance' );
+		if ( null !== $dir_error ) {
+			\WP_CLI::error( $dir_error );
+		}
 		$done   = Runner::run( $id, $pages, $states, $merge );
 		if ( ! $done ) {
 			\WP_CLI::error( 'Nothing was checked: another check holds the lock, or the last check changed meanwhile.' );
@@ -252,6 +257,15 @@ final class Command {
 		\WP_CLI::error( 'not a current candidate' );
 	}
 
+	/** Pure: adds --chrome=<path> to the options the browser script receives, when given. */
+	public static function with_chrome( array $opts, array $assoc ): array {
+		$chrome = (string) ( $assoc['chrome'] ?? '' );
+		if ( '' !== $chrome ) {
+			$opts['chrome'] = $chrome;
+		}
+		return $opts;
+	}
+
 	/** Pure: the node command line — no signed header in it (argv is visible to every local user in ps). */
 	public static function node_argv( string $node, string $script, string $pw, string $url, array $cookies, array $opts ): array {
 		return array( $node, $script, $pw, (string) wp_json_encode( array( $url ) ), (string) wp_json_encode( (object) $cookies ), (string) wp_json_encode( (object) $opts ) );
@@ -285,7 +299,7 @@ final class Command {
 		return $res;
 	}
 
-	/** [--pages=<list>] [--states=<list>] [--node=<path>] [--pw=<path>] */
+	/** [--pages=<list>] [--states=<list>] [--node=<path>] [--pw=<path>] [--chrome=<path>] */
 	public function usage( $args, $assoc ): void {
 		$last    = (array) get_option( 'beltoft_performance_last_check', array() );
 		$cid     = (string) ( $last['id'] ?? '' );
@@ -305,7 +319,7 @@ final class Command {
 				if ( $states && ! in_array( $state, $states, true ) ) {
 					continue;
 				}
-				$res = $this->run_node( array( 'id' => $cid, 'state' => $state ), $targets[ $page ], 'cart' === $state ? $jar : array(), array( 'mode' => 'usage' ), $node, $pw );
+				$res = $this->run_node( array( 'id' => $cid, 'state' => $state ), $targets[ $page ], 'cart' === $state ? $jar : array(), self::with_chrome( array( 'mode' => 'usage' ), $assoc ), $node, $pw );
 				if ( self::run_failed( $res, 2 ) ) {
 					\WP_CLI::error( "usage run failed for $page|$state: " . wp_json_encode( $res['errors'] ?? array() ) );
 				}
@@ -342,7 +356,7 @@ final class Command {
 		}
 	}
 
-	/** <target> [--node=<path>] [--pw=<path>] */
+	/** <target> [--node=<path>] [--pw=<path>] [--chrome=<path>] */
 	public function browser( $args, $assoc ): void {
 		$last = (array) get_option( 'beltoft_performance_last_check', array() );
 		$t    = (array) get_option( 'beltoft_performance_trials', array() );
@@ -363,7 +377,7 @@ final class Command {
 		$node    = (string) ( $assoc['node'] ?? '/usr/bin/node' );
 		$pw      = (string) ( $assoc['pw'] ?? '' );
 		$product  = Runner::flow_product_url();
-		$run      = fn( array $payload, string $url, array $cookies, string $mode ) => $this->run_node( $payload, $url, $cookies, array( 'mode' => $mode, 'product_url' => $product ), $node, $pw );
+		$run      = fn( array $payload, string $url, array $cookies, string $mode ) => $this->run_node( $payload, $url, $cookies, self::with_chrome( array( 'mode' => $mode, 'product_url' => $product ), $assoc ), $node, $pw );
 
 		// One job per (page, state) present in the stored trial evidence.
 		$jobs = array();

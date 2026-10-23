@@ -3,6 +3,7 @@
 // Prints {"pages":[{url,status,errors[]}],"errors":[...]} — JS errors / failed requests with the header's rule active.
 const pwPath = process.argv[2] || 'playwright-core';
 const { chromium } = require(pwPath);
+const { resolveChrome, playwrightPath } = require('./chrome-path.js');
 const header = process.env.BP_CHECK_HEADER || '';
 const urls = JSON.parse(process.argv[3] || '[]');
 const jar = JSON.parse(process.argv[4] || '{}');
@@ -72,7 +73,10 @@ const readCart = p => p.evaluate(async () => {
   } catch (e) { return null; }
 }).catch(() => null);
 (async () => {
-  const exe = process.env.BP_CHROME || '/root/.cache/ms-playwright/chromium-1134/chrome-linux/chrome';
+  let exe;
+  try {
+    exe = resolveChrome({ opt: opts.chrome, env: process.env, pwPath: playwrightPath(chromium) });
+  } catch (e) { console.error(e.message); process.exit(1); }
   const b = await chromium.launch({ executablePath: exe });
   const out = { pages: [], errors: [] };
   for (const url of urls) {

@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Beltoft Performance
  * Description: Loads only the plugins and files each page type uses. Rules are proposed by a check and approved by you.
- * Version:     0.1.0
+ * Version:     0.1.1
  * Author:      beltoft.net
  * Requires PHP: 8.3
  * License:     GPL-2.0-or-later
@@ -11,7 +11,7 @@
  */
 defined( 'ABSPATH' ) || exit;
 
-define( 'BELTOFT_PERFORMANCE_VERSION', '0.1.0' );
+define( 'BELTOFT_PERFORMANCE_VERSION', '0.1.1' );
 define( 'BELTOFT_PERFORMANCE_FILE', __FILE__ );
 define( 'BELTOFT_PERFORMANCE_DIR', __DIR__ );
 

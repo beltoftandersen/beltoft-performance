@@ -138,6 +138,7 @@ final class Runner {
 			return self::run_locked( $id, $pages, $states, $merge );
 		} finally {
 			$wpdb->get_var( $wpdb->prepare( 'SELECT RELEASE_LOCK(%s)', self::LOCK ) );
+			\BeltoftPerformance\Support\Owner::adopt_tree( wp_upload_dir()['basedir'] . '/beltoft-performance' );
 		}
 	}
 

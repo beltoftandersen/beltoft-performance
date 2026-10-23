@@ -29,5 +29,5 @@ spl_autoload_register( static function ( $class ) {
 	}
 } );
 define( 'BELTOFT_PERFORMANCE_DIR', dirname( __DIR__ ) );
-define( 'BELTOFT_PERFORMANCE_VERSION', '0.1.0' );
+define( 'BELTOFT_PERFORMANCE_VERSION', '0.1.1' );
 function _n( $s, $p, $n, $d = null ) { return 1 === (int) $n ? $s : $p; }
