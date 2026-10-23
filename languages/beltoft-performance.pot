@@ -1,0 +1,1777 @@
+# Copyright (C) 2026 beltoft.net
+# This file is distributed under the same license as the Beltoft Performance plugin.
+msgid ""
+msgstr ""
+"Project-Id-Version: Beltoft Performance 0.1.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/beltoft-performance\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2026-10-05T07:44:57+00:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.12.0\n"
+"X-Domain: beltoft-performance\n"
+
+#. Plugin Name of the plugin
+#: beltoft-performance.php
+msgid "Beltoft Performance"
+msgstr ""
+
+#. Description of the plugin
+#: beltoft-performance.php
+msgid "Loads only the plugins and files each page type uses. Rules are proposed by a check and approved by you."
+msgstr ""
+
+#. Author of the plugin
+#: beltoft-performance.php
+msgid "beltoft.net"
+msgstr ""
+
+#: src/Admin/Manager.php:115
+msgid "Switching a plugin or file off on cart, checkout, order received or account needs \"I tested this flow by hand\" ticked (or a passed trial with a passed browser test)."
+msgstr ""
+
+#: src/Admin/Manager.php:283
+msgid "The page could not be fetched."
+msgstr ""
+
+#: src/Admin/Manager.php:286
+#, php-format
+msgid "The page redirects (HTTP %d): load the address it redirects to."
+msgstr ""
+
+#: src/Admin/Manager.php:289
+#: src/Admin/Manager.php:295
+#, php-format
+msgid "The page answered HTTP %d: nothing was stored."
+msgstr ""
+
+#: src/Admin/Manager.php:292
+msgid "The page loaded but wrote no report (served from a cache, or not a normal page): nothing was stored."
+msgstr ""
+
+#: src/Admin/Manager.php:408
+#, php-format
+msgid "Check %1$s (%2$s state)"
+msgstr ""
+
+#: src/Admin/Manager.php:411
+#, php-format
+msgid "Evidence badges come from check %s (same files by address), not from this load."
+msgstr ""
+
+#: src/Admin/Manager.php:421
+#, php-format
+msgid "Loaded %1$s from %2$s"
+msgstr ""
+
+#: src/Admin/Manager.php:463
+#: src/Admin/OverviewPage.php:37
+#: src/Admin/OverviewPage.php:415
+msgid "Permission denied."
+msgstr ""
+
+#: src/Admin/Manager.php:493
+#, php-format
+msgid "Loaded %1$s: %2$d files."
+msgstr ""
+
+#: src/Admin/Manager.php:524
+#, php-format
+msgid "Saved: %1$d switched off, %2$d switched on."
+msgstr ""
+
+#: src/Admin/Manager.php:532
+#, php-format
+msgid "Refused: %s"
+msgstr ""
+
+#: src/Admin/Manager.php:541
+#: src/Admin/Manager.php:550
+#: src/Check/Runner.php:334
+msgid "Unknown page type, URL or template."
+msgstr ""
+
+#: src/Admin/OverviewPage.php:20
+#: src/Admin/OverviewPage.php:427
+msgid "Speed"
+msgstr ""
+
+#: src/Admin/OverviewPage.php:20
+msgid "Performance"
+msgstr ""
+
+#: src/Admin/OverviewPage.php:65
+msgid "A check is already running. Wait until it is done, then start the next one."
+msgstr ""
+
+#. translators: %s: kind of page
+#: src/Admin/OverviewPage.php:74
+#, php-format
+msgid "Checking %s again in the background. The bar below shows how far it is."
+msgstr ""
+
+#: src/Admin/OverviewPage.php:79
+msgid "The check has started. It runs in the background and takes about a minute — the bar below shows how far it is."
+msgstr ""
+
+#. translators: %d: number of tests
+#: src/Admin/OverviewPage.php:83
+#, php-format
+msgid "%d test that was waiting was cancelled — start it again once the check is done."
+msgid_plural "%d tests that were waiting were cancelled — start them again once the check is done."
+msgstr[0] ""
+msgstr[1] ""
+
+#: src/Admin/OverviewPage.php:99
+msgid "the shop"
+msgstr ""
+
+#: src/Admin/OverviewPage.php:105
+msgid "Queued: it is tested in the background. You can leave this page — refresh later to see the result."
+msgstr ""
+
+#: src/Admin/OverviewPage.php:105
+#: src/Admin/OverviewPage.php:138
+msgid "Not a current suggestion: check the shop again."
+msgstr ""
+
+#. translators: %d: number of suggestions
+#: src/Admin/OverviewPage.php:113
+#, php-format
+msgid "%d suggestion queued: it is tested in the background. You can leave this page — refresh later to see the results."
+msgid_plural "%d suggestions queued: they are tested in the background, one after the other. You can leave this page — refresh later to see the results."
+msgstr[0] ""
+msgstr[1] ""
+
+#. translators: %d: number of suggestions
+#: src/Admin/OverviewPage.php:113
+msgid "Nothing to test: check the shop again."
+msgstr ""
+
+#: src/Admin/OverviewPage.php:129
+msgid "Only a suggestion with a passed, current test can be switched off. Test it again."
+msgstr ""
+
+#. translators: %s: names
+#: src/Admin/OverviewPage.php:165
+#, php-format
+msgid "Switched off: %s. You can undo this any time under \"Switched off\"."
+msgstr ""
+
+#. translators: %s: names and reasons
+#: src/Admin/OverviewPage.php:169
+#, php-format
+msgid "Not switched off: %s"
+msgstr ""
+
+#: src/Admin/OverviewPage.php:171
+msgid "Nothing was selected."
+msgstr ""
+
+#: src/Admin/OverviewPage.php:195
+msgid "Kept: it won't be suggested for this kind of page again. You can change that under \"Switched off\"."
+msgstr ""
+
+#: src/Admin/OverviewPage.php:206
+msgid "It will be suggested again after the next check."
+msgstr ""
+
+#: src/Admin/OverviewPage.php:249
+msgid "Nothing was ticked: tick the pages where it should load again."
+msgstr ""
+
+#: src/Admin/OverviewPage.php:251
+msgid "Switched back on. It loads again on those pages."
+msgstr ""
+
+#: src/Admin/OverviewPage.php:263
+msgid "Saved."
+msgstr ""
+
+#: src/Admin/OverviewPage.php:269
+msgid "Repaired."
+msgstr ""
+
+#: src/Admin/OverviewPage.php:269
+msgid "Could not repair: WordPress may not write the files it needs. Ask your developer."
+msgstr ""
+
+#: src/Admin/OverviewPage.php:275
+msgid "Test customer account saved."
+msgstr ""
+
+#: src/Admin/OverviewPage.php:281
+msgid "The rules file is missing: the loader unloads nothing. Click Repair or save a rule to write it."
+msgstr ""
+
+#: src/Admin/OverviewPage.php:284
+msgid "The rules file cannot be read by PHP: the loader unloads nothing. Fix its permissions."
+msgstr ""
+
+#. translators: %s: file owner
+#: src/Admin/OverviewPage.php:288
+#, php-format
+msgid "The rules file is owned by %s, not www-data: the site cannot rewrite it when rules change. Run chown www-data:www-data on it."
+msgstr ""
+
+#: src/Admin/OverviewPage.php:397
+msgid "Overview"
+msgstr ""
+
+#: src/Admin/OverviewPage.php:397
+#: src/Admin/OverviewPage.php:428
+msgid "Switched off"
+msgstr ""
+
+#: src/Admin/OverviewPage.php:397
+#: src/Admin/OverviewPage.php:429
+msgid "Settings"
+msgstr ""
+
+#: src/Admin/OverviewPage.php:404
+msgid "Speed sections"
+msgstr ""
+
+#: src/Admin/OverviewPage.php:427
+msgid "Plugins add code to every page, even pages that don't use them. This tool finds those and keeps them from loading where they aren't needed, so pages load faster. Nothing is switched off without your OK."
+msgstr ""
+
+#: src/Admin/OverviewPage.php:428
+msgid "These don't load on the pages listed. If something looks broken on a page, find it here and switch it back on."
+msgstr ""
+
+#: src/Admin/OverviewPage.php:429
+msgid "You rarely need to change these."
+msgstr ""
+
+#: src/Admin/Sorting.php:107
+#: src/Admin/Sorting.php:139
+msgid "Adds nothing visible to this page."
+msgstr ""
+
+#: src/Admin/Sorting.php:107
+msgid "Its styling isn't used on this page."
+msgstr ""
+
+#. translators: %s: page names
+#: src/Admin/Sorting.php:109
+#, php-format
+msgid "Switching it off applies to: %s."
+msgstr ""
+
+#: src/Admin/Sorting.php:111
+msgid "Also checked in a real browser on phone and computer."
+msgstr ""
+
+#: src/Admin/Sorting.php:120
+msgid "Testing now…"
+msgstr ""
+
+#: src/Admin/Sorting.php:123
+msgid "Waiting to be tested."
+msgstr ""
+
+#: src/Admin/Sorting.php:126
+msgid "Better keep it, or test it again."
+msgstr ""
+
+#: src/Admin/Sorting.php:129
+msgid "Didn't run when the page loaded. It may only be needed when someone clicks something, so it can't be fully tested."
+msgstr ""
+
+#: src/Admin/Sorting.php:132
+msgid "Almost done — needs one more check by your developer."
+msgstr ""
+
+#. translators: %s: how long a test takes
+#: src/Admin/Sorting.php:136
+#, php-format
+msgid "The shop changed since the last test. Test it again — it takes %s."
+msgstr ""
+
+#: src/Admin/Sorting.php:139
+msgid "Its styling doesn't seem to be used here."
+msgstr ""
+
+#. translators: %s: how long a test takes
+#: src/Admin/Sorting.php:141
+#, php-format
+msgid "Not tested yet — testing takes %s."
+msgstr ""
+
+#: src/Admin/Sorting.php:144
+msgid "Tested, but it can only be switched off by hand."
+msgstr ""
+
+#: src/Admin/Sorting.php:168
+msgid "you chose to keep it"
+msgstr ""
+
+#: src/Admin/Sorting.php:172
+#: src/Admin/Words.php:262
+#: src/Admin/Words.php:278
+msgid "used on this page"
+msgstr ""
+
+#: src/Admin/Sorting.php:174
+msgid "loads here"
+msgstr ""
+
+#: src/Admin/Sorting.php:261
+msgid "Nothing is being switched off right now."
+msgstr ""
+
+#: src/Admin/Sorting.php:262
+msgid "A file the speed tool needs is missing. Click Repair to write it again."
+msgstr ""
+
+#: src/Admin/Sorting.php:262
+msgid "A file the speed tool needs can't be read or updated. Ask your developer to check its file permissions."
+msgstr ""
+
+#: src/Admin/Sorting.php:267
+#: src/Admin/Sorting.php:270
+msgid "The speed tool's helper isn't installed, so nothing is switched off."
+msgstr ""
+
+#: src/Admin/Sorting.php:267
+msgid "Click Repair to install it again."
+msgstr ""
+
+#: src/Admin/Sorting.php:270
+msgid "WordPress isn't allowed to install it. Ask your developer to fix the folder permissions."
+msgstr ""
+
+#: src/Admin/Sorting.php:273
+msgid "The speed tool's helper is out of date."
+msgstr ""
+
+#: src/Admin/Sorting.php:273
+msgid "Click Repair to update it."
+msgstr ""
+
+#: src/Admin/Sorting.php:276
+msgid "The shop hasn't been checked yet."
+msgstr ""
+
+#: src/Admin/Sorting.php:276
+msgid "The check looks at every kind of page as a visitor, with a full cart and logged in. It runs in the background and takes about a minute."
+msgstr ""
+
+#. translators: 1: pages that failed, 2: pages looked at
+#: src/Admin/Sorting.php:284
+#, php-format
+msgid "The last check had problems: %1$d of %2$d pages didn't load."
+msgstr ""
+
+#. translators: %s: date
+#: src/Admin/Sorting.php:287
+#, php-format
+msgid "Last checked %s. Check again; if it keeps happening, ask your developer."
+msgstr ""
+
+#. translators: %d: number of things
+#: src/Admin/Sorting.php:293
+#, php-format
+msgid "Everything is working. %d thing is already switched off."
+msgid_plural "Everything is working. %d things are already switched off."
+msgstr[0] ""
+msgstr[1] ""
+
+#. translators: %d: number of things
+#: src/Admin/Sorting.php:293
+msgid "Everything is working. Nothing is switched off yet."
+msgstr ""
+
+#. translators: 1: date, 2: number of pages
+#: src/Admin/Sorting.php:295
+#, php-format
+msgid "Last checked %1$s — %2$d page looked at, no problems found."
+msgid_plural "Last checked %1$s — %2$d pages looked at, no problems found."
+msgstr[0] ""
+msgstr[1] ""
+
+#: src/Admin/Sorting.php:362
+msgid "Switched off by you on purpose: this kind of plugin is never suggested, because what it does doesn't show on the page and no test can prove it unused."
+msgstr ""
+
+#: src/Admin/Sorting.php:363
+msgid "This kind of plugin is normally never switched off: what it does doesn't show on the page, so no test can prove it's unused. Switching it back on is recommended."
+msgstr ""
+
+#: src/Admin/Sorting.php:366
+msgid "This plugin is no longer installed, so this does nothing. Switch it back on everywhere to tidy up."
+msgstr ""
+
+#: src/Admin/Sorting.php:370
+msgid "(on the trade site only)"
+msgstr ""
+
+#. translators: %s: page path
+#: src/Admin/Ui.php:34
+#, php-format
+msgid "URL %s"
+msgstr ""
+
+#. translators: %s: Bricks template title
+#: src/Admin/Ui.php:39
+#, php-format
+msgid "Template: %s"
+msgstr ""
+
+#. translators: %s: Bricks template title
+#: src/Admin/Ui.php:39
+#, php-format
+msgid "Template #%d"
+msgstr ""
+
+#: src/Admin/Ui.php:47
+msgid "Plugin"
+msgstr ""
+
+#: src/Admin/Ui.php:48
+msgid "Plugin files"
+msgstr ""
+
+#: src/Admin/Ui.php:49
+msgid "Script"
+msgstr ""
+
+#: src/Admin/Ui.php:50
+msgid "Style"
+msgstr ""
+
+#: src/Admin/Ui.php:97
+msgid "The browser test failed."
+msgstr ""
+
+#: src/Admin/Ui.php:97
+msgid "The test failed."
+msgstr ""
+
+#: src/Admin/Ui.php:106
+msgid "The pages changed since the test: test again."
+msgstr ""
+
+#: src/Admin/Ui.php:111
+msgid "scripts are switched off by hand"
+msgstr ""
+
+#: src/Admin/Ui.php:165
+msgid "everywhere"
+msgstr ""
+
+#: src/Admin/Ui.php:194
+#: src/Cleanup/Switches.php:21
+msgid "Emojis"
+msgstr ""
+
+#: src/Admin/Ui.php:195
+msgid "Embeds"
+msgstr ""
+
+#: src/Admin/Ui.php:196
+#: src/Cleanup/Switches.php:23
+msgid "jQuery Migrate"
+msgstr ""
+
+#: src/Admin/Ui.php:197
+msgid "Lazy loading"
+msgstr ""
+
+#: src/Admin/views/experts.php:24
+msgid "unused here"
+msgstr ""
+
+#: src/Admin/views/experts.php:25
+msgid "used"
+msgstr ""
+
+#: src/Admin/views/experts.php:26
+msgid "not measured"
+msgstr ""
+
+#: src/Admin/views/experts.php:27
+msgid "protected"
+msgstr ""
+
+#: src/Admin/views/experts.php:28
+#: src/Admin/views/experts.php:29
+msgid "test passed"
+msgstr ""
+
+#: src/Admin/views/experts.php:30
+msgid "browser test missing"
+msgstr ""
+
+#: src/Admin/views/experts.php:31
+msgid "test failed"
+msgstr ""
+
+#: src/Admin/views/experts.php:34
+msgid "Not tested"
+msgstr ""
+
+#: src/Admin/views/experts.php:35
+msgid "Test passed"
+msgstr ""
+
+#: src/Admin/views/experts.php:36
+msgid "Test failed"
+msgstr ""
+
+#: src/Admin/views/experts.php:37
+msgid "Browser test missing"
+msgstr ""
+
+#: src/Admin/views/experts.php:46
+msgid "Suggested"
+msgstr ""
+
+#. translators: %s: page type, URL or template
+#: src/Admin/views/experts.php:54
+#, php-format
+msgid "already off for %s"
+msgstr ""
+
+#. translators: 1: number of files, 2: total size
+#: src/Admin/views/experts.php:62
+#, php-format
+msgid "For experts: every single file on this page (%1$d file, %2$s)"
+msgid_plural "For experts: every single file on this page (%1$d files, %2$s)"
+msgstr[0] ""
+msgstr[1] ""
+
+#: src/Admin/views/experts.php:64
+msgid "For experts: every single file on this page"
+msgstr ""
+
+#: src/Admin/views/experts.php:74
+msgid "Waiting for the browser check"
+msgstr ""
+
+#: src/Admin/views/experts.php:74
+msgid "run these on the server as root (the browser needs it), the last line gives the files back to the web server; then reload this page:"
+msgstr ""
+
+#: src/Admin/views/experts.php:83
+msgid "Load again"
+msgstr ""
+
+#: src/Admin/views/experts.php:83
+msgid "Load"
+msgstr ""
+
+#: src/Admin/views/experts.php:83
+msgid "Fetch this page as a guest and list what it prints"
+msgstr ""
+
+#: src/Admin/views/experts.php:84
+msgid "Not loaded yet."
+msgstr ""
+
+#: src/Admin/views/experts.php:88
+#: src/Admin/views/page.php:178
+msgid "Scripts can be needed on click or by other scripts — check the page by hand after switching it off."
+msgstr ""
+
+#: src/Admin/views/experts.php:91
+msgid "Off"
+msgstr ""
+
+#: src/Admin/views/experts.php:91
+msgid "File"
+msgstr ""
+
+#: src/Admin/views/experts.php:91
+msgid "Size"
+msgstr ""
+
+#: src/Admin/views/experts.php:91
+msgid "Status"
+msgstr ""
+
+#: src/Admin/views/experts.php:94
+msgid "Off here (no longer printed)"
+msgstr ""
+
+#: src/Admin/views/experts.php:96
+msgid "Already off through the page type or template"
+msgstr ""
+
+#: src/Admin/views/experts.php:98
+msgid "Other suggestions"
+msgstr ""
+
+#: src/Admin/views/experts.php:100
+msgid "Core / theme"
+msgstr ""
+
+#. translators: %s: rule target
+#: src/Admin/views/experts.php:109
+#: src/Admin/views/experts.php:129
+#, php-format
+msgid "%s is already off"
+msgstr ""
+
+#. translators: %s: rule target
+#: src/Admin/views/experts.php:112
+#: src/Admin/views/experts.php:134
+#, php-format
+msgid "Switch off %s"
+msgstr ""
+
+#: src/Admin/views/experts.php:114
+#: src/Admin/views/experts.php:131
+msgid "Protected"
+msgstr ""
+
+#. translators: %d: number of files
+#: src/Admin/views/experts.php:118
+#, php-format
+msgid "%d file"
+msgid_plural "%d files"
+msgstr[0] ""
+msgstr[1] ""
+
+#. translators: %d: number of files
+#: src/Admin/views/experts.php:118
+msgid "no files"
+msgstr ""
+
+#: src/Admin/views/experts.php:120
+msgid "never suggested"
+msgstr ""
+
+#. translators: %s: other files
+#: src/Admin/views/experts.php:139
+#, php-format
+msgid "Also removes: %s"
+msgstr ""
+
+#: src/Admin/views/experts.php:141
+msgid "external"
+msgstr ""
+
+#: src/Admin/views/experts.php:149
+msgid "I know what the plugins marked \"never suggested\" do, and switch them off myself"
+msgstr ""
+
+#: src/Admin/views/experts.php:150
+msgid "Cache, security, e-mail and statistics plugins are never suggested: what they do doesn't show on the page, so no test can prove them unused. Tick this to switch one off anyway."
+msgstr ""
+
+#: src/Admin/views/experts.php:153
+msgid "I tested this flow by hand"
+msgstr ""
+
+#: src/Admin/views/experts.php:154
+msgid "Needed to switch a plugin off here without a passed browser test: add to cart, check out and pay with it off first."
+msgstr ""
+
+#: src/Admin/views/experts.php:156
+#: src/Admin/views/settings.php:43
+#: src/Admin/views/settings.php:53
+msgid "Save"
+msgstr ""
+
+#: src/Admin/views/experts.php:156
+msgid "Ticked = off on this page only. Changes show under \"Switched off\" as switched off by hand."
+msgstr ""
+
+#: src/Admin/views/off.php:21
+msgid "Nothing is switched off yet. Open a page under Overview to see what can be."
+msgstr ""
+
+#: src/Admin/views/off.php:33
+msgid "Switch back on…"
+msgstr ""
+
+#. translators: %s: name of the thing
+#: src/Admin/views/off.php:38
+#, php-format
+msgid "Where should %s load again?"
+msgstr ""
+
+#: src/Admin/views/off.php:43
+msgid "Everywhere"
+msgstr ""
+
+#: src/Admin/views/off.php:45
+msgid "Switch back on"
+msgstr ""
+
+#. translators: %d: number of things
+#: src/Admin/views/off.php:54
+#, php-format
+msgid "%d thing switched off"
+msgid_plural "%d things switched off"
+msgstr[0] ""
+msgstr[1] ""
+
+#. translators: %d: number of suggestions
+#: src/Admin/views/off.php:58
+#, php-format
+msgid "Suggestions you chose to keep (%d)"
+msgstr ""
+
+#: src/Admin/views/off.php:59
+msgid "You said \"Keep it\" to these, so they aren't suggested any more. Click \"Suggest again\" to see them after the next check."
+msgstr ""
+
+#. translators: 1: name, 2: where
+#: src/Admin/views/off.php:64
+#, php-format
+msgid "%1$s — kept on %2$s"
+msgstr ""
+
+#. translators: 1: name, 2: where
+#: src/Admin/views/off.php:64
+msgid "every page"
+msgstr ""
+
+#: src/Admin/views/off.php:65
+msgid "Suggest again"
+msgstr ""
+
+#: src/Admin/views/overview.php:75
+msgid "For your developer"
+msgstr ""
+
+#: src/Admin/views/overview.php:80
+msgid "Repair"
+msgstr ""
+
+#: src/Admin/views/overview.php:82
+msgid "Check the shop"
+msgstr ""
+
+#: src/Admin/views/overview.php:84
+msgid "Check the shop again"
+msgstr ""
+
+#: src/Admin/views/overview.php:84
+msgid "Looks at every kind of page again, in the background (about a minute)"
+msgstr ""
+
+#: src/Admin/views/overview.php:88
+msgid "Kind of page to check again"
+msgstr ""
+
+#: src/Admin/views/overview.php:94
+msgid "Looks at just this kind of page again; the other pages keep their results"
+msgstr ""
+
+#: src/Admin/views/overview.php:94
+msgid "Check one kind of page"
+msgstr ""
+
+#. translators: %d: number of things
+#: src/Admin/views/overview.php:106
+#, php-format
+msgid "What to do now: %d safe thing to switch off"
+msgid_plural "What to do now: %d safe things to switch off"
+msgstr[0] ""
+msgstr[1] ""
+
+#: src/Admin/views/overview.php:107
+msgid "They were tested on your shop and nothing changed on the pages. Open a page below to switch them off."
+msgstr ""
+
+#: src/Admin/views/overview.php:109
+msgid "Show me"
+msgstr ""
+
+#: src/Admin/views/overview.php:114
+msgid "Nothing to do right now."
+msgstr ""
+
+#: src/Admin/views/overview.php:115
+msgid "Nothing new has passed all the tests. Each page below lists what still needs your decision."
+msgstr ""
+
+#: src/Admin/views/overview.php:125
+#: src/Admin/views/overview.php:144
+msgid "Plugins loading"
+msgstr ""
+
+#: src/Admin/views/overview.php:126
+#: src/Admin/views/overview.php:144
+#: src/Admin/views/overview.php:163
+msgid "Already off"
+msgstr ""
+
+#: src/Admin/views/overview.php:127
+#: src/Admin/views/overview.php:144
+#: src/Admin/views/overview.php:161
+#: src/Admin/views/page.php:111
+msgid "Safe to switch off"
+msgstr ""
+
+#: src/Admin/views/overview.php:129
+#: src/Admin/views/overview.php:131
+#: src/Admin/views/overview.php:144
+#: src/Admin/views/overview.php:162
+#: src/Admin/views/page.php:134
+msgid "Your decision"
+msgstr ""
+
+#: src/Admin/views/overview.php:129
+msgid "Handled with care: only tested changes"
+msgstr ""
+
+#: src/Admin/views/overview.php:133
+msgid "Open →"
+msgstr ""
+
+#: src/Admin/views/overview.php:140
+msgid "Your shop's pages"
+msgstr ""
+
+#: src/Admin/views/overview.php:141
+msgid "Every product page works the same way, so one row covers all of them."
+msgstr ""
+
+#: src/Admin/views/overview.php:144
+#: src/Admin/views/overview.php:201
+msgid "Page"
+msgstr ""
+
+#. translators: %d: number of kinds of page
+#: src/Admin/views/overview.php:150
+#, php-format
+msgid "Show the other %d kind of page"
+msgid_plural "Show the other %d kinds of page"
+msgstr[0] ""
+msgstr[1] ""
+
+#: src/Admin/views/overview.php:155
+msgid "Need one specific page?"
+msgstr ""
+
+#: src/Admin/views/overview.php:156
+msgid "Check one address or a Bricks template"
+msgstr ""
+
+#: src/Admin/views/overview.php:161
+msgid "tested, the page looked and worked the same without it."
+msgstr ""
+
+#: src/Admin/views/overview.php:162
+msgid "not proven safe — some weren't tested yet, some failed a test."
+msgstr ""
+
+#: src/Admin/views/overview.php:163
+msgid "switched off earlier; you can undo it any time."
+msgstr ""
+
+#: src/Admin/views/overview.php:175
+msgid "Open"
+msgstr ""
+
+#: src/Admin/views/overview.php:194
+msgid "Advanced: open one specific page or a Bricks template"
+msgstr ""
+
+#: src/Admin/views/overview.php:195
+msgid "Changes made there apply to that one page (or every page using that template) only, and are switched off by hand — not tested."
+msgstr ""
+
+#: src/Admin/views/overview.php:197
+msgid "That page can't be opened here: it is not a normal shop page (admin, login, checkout steps and account sub-pages are always left alone)."
+msgstr ""
+
+#: src/Admin/views/overview.php:201
+msgid "— choose a page —"
+msgstr ""
+
+#: src/Admin/views/overview.php:202
+msgid "Web address"
+msgstr ""
+
+#: src/Admin/views/overview.php:204
+msgid "Bricks template"
+msgstr ""
+
+#: src/Admin/views/overview.php:204
+msgid "— choose a template —"
+msgstr ""
+
+#: src/Admin/views/page.php:65
+msgid "← Back to all pages"
+msgstr ""
+
+#: src/Admin/views/page.php:69
+msgid "Check this page again"
+msgstr ""
+
+#: src/Admin/views/page.php:69
+msgid "Looks at just this kind of page again, in the background; the other pages keep their results"
+msgstr ""
+
+#. translators: %s: page address
+#: src/Admin/views/page.php:76
+#, php-format
+msgid "We looked at %s, which uses this template."
+msgstr ""
+
+#. translators: %s: page address
+#: src/Admin/views/page.php:79
+#, php-format
+msgid "This is %s."
+msgstr ""
+
+#. translators: %s: page address
+#: src/Admin/views/page.php:79
+#, php-format
+msgid "This covers all %1$s. The check looked at %2$s."
+msgstr ""
+
+#. translators: %d: number of plugins
+#: src/Admin/views/page.php:82
+#, php-format
+msgid "%d plugin adds something to it."
+msgid_plural "%d plugins add something to it."
+msgstr[0] ""
+msgstr[1] ""
+
+#: src/Admin/views/page.php:84
+msgid "Below is what you can safely switch off, what needs your decision, and what has to stay."
+msgstr ""
+
+#: src/Admin/views/page.php:86
+msgid "Changes here apply to every page using this template."
+msgstr ""
+
+#: src/Admin/views/page.php:88
+msgid "Changes here apply to this one page only."
+msgstr ""
+
+#: src/Admin/views/page.php:91
+msgid "The last check didn't look at this kind of page. Check the shop again from the overview."
+msgstr ""
+
+#: src/Admin/views/page.php:93
+msgid "We haven't looked at this page yet. Load it first to see what it uses."
+msgstr ""
+
+#: src/Admin/views/page.php:102
+msgid "Switching off by hand"
+msgstr ""
+
+#: src/Admin/views/page.php:103
+msgid "Suggestions and tests are made for whole kinds of page (see the overview). Here you can switch things off by hand, under \"For experts\" below — nothing is tested, so open the page afterwards and click around once."
+msgstr ""
+
+#: src/Admin/views/page.php:105
+msgid "Plugins start before WordPress knows the template, so here a plugin can only lose its styling and code files."
+msgstr ""
+
+#: src/Admin/views/page.php:107
+msgid "Look at this page again"
+msgstr ""
+
+#: src/Admin/views/page.php:107
+msgid "Load this page"
+msgstr ""
+
+#: src/Admin/views/page.php:107
+msgid "Loading…"
+msgstr ""
+
+#. translators: %s: page name
+#: src/Admin/views/page.php:114
+#, php-format
+msgid "We loaded the %s page with and without these — as a visitor, with a full cart and logged in. Nothing changed."
+msgstr ""
+
+#: src/Admin/views/page.php:124
+msgid "Switch off selected"
+msgstr ""
+
+#: src/Admin/views/page.php:125
+msgid "You can undo this any time under \"Switched off\"."
+msgstr ""
+
+#: src/Admin/views/page.php:129
+msgid "Nothing on this page has passed all the tests yet."
+msgstr ""
+
+#. translators: %s: page name
+#: src/Admin/views/page.php:137
+#, php-format
+msgid "Not proven safe — some weren't tested yet, some failed a test. If you switch one off, open the %s page afterwards and click around once."
+msgstr ""
+
+#. translators: %d: number
+#: src/Admin/views/page.php:149
+msgid "Test it for me"
+msgid_plural "Test all %d for me"
+msgstr[0] ""
+msgstr[1] ""
+
+#. translators: %d: number
+#: src/Admin/views/page.php:150
+msgid "Runs in the background, one after the other. You can leave this page; tested ones move to \"Safe to switch off\" on their own."
+msgstr ""
+
+#: src/Admin/views/page.php:154
+msgid "This page is part of buying, so only fully tested changes are offered as safe. You can still switch a plugin or script off yourself (\"Switch it off yourself…\"), but only after clicking through checkout with it off."
+msgstr ""
+
+#: src/Admin/views/page.php:162
+msgid "Switch it off yourself…"
+msgstr ""
+
+#: src/Admin/views/page.php:166
+msgid "I clicked through checkout myself (add to cart, check out, pay) with it switched off, and everything worked"
+msgstr ""
+
+#: src/Admin/views/page.php:167
+msgid "Switch off by hand"
+msgstr ""
+
+#. translators: %s: how long
+#: src/Admin/views/page.php:176
+msgid "Test again"
+msgstr ""
+
+#. translators: %s: how long
+#: src/Admin/views/page.php:176
+msgid "Test it"
+msgstr ""
+
+#. translators: %s: how long
+#: src/Admin/views/page.php:176
+#, php-format
+msgid "Runs in the background (%s). You can leave this page."
+msgstr ""
+
+#: src/Admin/views/page.php:178
+msgid "Switch off"
+msgstr ""
+
+#: src/Admin/views/page.php:178
+msgid "Switch it off on this kind of page only"
+msgstr ""
+
+#: src/Admin/views/page.php:180
+msgid "Keep it"
+msgstr ""
+
+#: src/Admin/views/page.php:180
+msgid "Stop suggesting it for this kind of page"
+msgstr ""
+
+#: src/Admin/views/page.php:186
+msgid "Nothing waiting for you here."
+msgstr ""
+
+#: src/Admin/views/page.php:193
+msgid "Needed here — leave these on"
+msgstr ""
+
+#: src/Admin/views/page.php:193
+msgid "Loading on this page"
+msgstr ""
+
+#: src/Admin/views/page.php:194
+msgid "These stay on here."
+msgstr ""
+
+#: src/Admin/views/page.php:194
+msgid "These plugins load here. To switch one off for this page only, use \"For experts\" below."
+msgstr ""
+
+#: src/Admin/views/page.php:200
+msgid "WooCommerce, Bricks and your own plugins"
+msgstr ""
+
+#: src/Admin/views/page.php:200
+msgid "the shop itself — always on"
+msgstr ""
+
+#: src/Admin/views/page.php:207
+msgid "Already switched off here"
+msgstr ""
+
+#: src/Admin/views/page.php:210
+msgid "Undo one →"
+msgstr ""
+
+#: src/Admin/views/page.php:212
+msgid "Nothing is switched off here yet."
+msgstr ""
+
+#: src/Admin/views/settings.php:12
+#: src/Admin/views/settings.php:16
+msgid "WordPress extras"
+msgstr ""
+
+#: src/Admin/views/settings.php:13
+msgid "Small things WordPress adds to every page that a shop doesn't need. All on is the right choice."
+msgstr ""
+
+#: src/Admin/views/settings.php:22
+#: src/Admin/views/settings.php:24
+msgid "Scripts"
+msgstr ""
+
+#: src/Admin/views/settings.php:23
+msgid "Make pages show sooner on phones. Each has a trade-off, so they start switched off."
+msgstr ""
+
+#: src/Admin/views/settings.php:29
+#: src/Admin/views/settings.php:31
+msgid "Database"
+msgstr ""
+
+#: src/Admin/views/settings.php:30
+msgid "Removes leftovers WordPress keeps, once a night - the same clean-up Perfmatters ran. Revisions are removed too, so older versions of pages can no longer be restored."
+msgstr ""
+
+#. translators: 1: date and time, 2: list like "post_revisions 12, all_transients 40"
+#: src/Admin/views/settings.php:39
+#, php-format
+msgid "Last clean-up %1$s: %2$s."
+msgstr ""
+
+#. translators: 1: date and time, 2: list like "post_revisions 12, all_transients 40"
+#: src/Admin/views/settings.php:39
+msgid "nothing to remove"
+msgstr ""
+
+#: src/Admin/views/settings.php:42
+msgid "Open Bricks settings"
+msgstr ""
+
+#: src/Admin/views/settings.php:47
+msgid "Test customer account"
+msgstr ""
+
+#: src/Admin/views/settings.php:48
+msgid "To check pages as a logged-in customer, the check signs in as this test account. Use a test account — never a real customer."
+msgstr ""
+
+#: src/Admin/views/settings.php:51
+msgid "Username"
+msgstr ""
+
+#: src/Admin/views/settings.php:52
+msgid "E-mail"
+msgstr ""
+
+#: src/Admin/Words.php:67
+msgid "Home page"
+msgstr ""
+
+#: src/Admin/Words.php:68
+msgid "Shop"
+msgstr ""
+
+#: src/Admin/Words.php:69
+msgid "Product pages"
+msgstr ""
+
+#: src/Admin/Words.php:70
+msgid "Category pages"
+msgstr ""
+
+#: src/Admin/Words.php:71
+msgid "Brand pages"
+msgstr ""
+
+#: src/Admin/Words.php:72
+msgid "Tag pages"
+msgstr ""
+
+#: src/Admin/Words.php:73
+msgid "Search results"
+msgstr ""
+
+#: src/Admin/Words.php:74
+msgid "Cart"
+msgstr ""
+
+#: src/Admin/Words.php:75
+msgid "Checkout"
+msgstr ""
+
+#: src/Admin/Words.php:76
+msgid "Order confirmation"
+msgstr ""
+
+#: src/Admin/Words.php:77
+msgid "My account"
+msgstr ""
+
+#: src/Admin/Words.php:78
+msgid "Blog"
+msgstr ""
+
+#: src/Admin/Words.php:79
+msgid "Blog posts"
+msgstr ""
+
+#: src/Admin/Words.php:80
+msgid "Other pages"
+msgstr ""
+
+#. translators: %s: plugin name
+#: src/Admin/Words.php:126
+#, php-format
+msgid "%s code"
+msgstr ""
+
+#. translators: %s: plugin name
+#: src/Admin/Words.php:126
+#, php-format
+msgid "%s styling"
+msgstr ""
+
+#. translators: %s: file name
+#: src/Admin/Words.php:129
+#, php-format
+msgid "Code file \"%s\""
+msgstr ""
+
+#. translators: %s: file name
+#: src/Admin/Words.php:129
+#, php-format
+msgid "Styling file \"%s\""
+msgstr ""
+
+#. translators: 1: page title, 2: page address
+#: src/Admin/Words.php:137
+#, php-format
+msgid "%1$s (%2$s)"
+msgstr ""
+
+#. translators: 1: page title, 2: page address
+#: src/Admin/Words.php:137
+#, php-format
+msgid "the page %s"
+msgstr ""
+
+#. translators: %s: Bricks template name
+#: src/Admin/Words.php:142
+#, php-format
+msgid "pages using the Bricks template \"%s\""
+msgstr ""
+
+#. translators: %s: Bricks template name
+#: src/Admin/Words.php:142
+#, php-format
+msgid "pages using Bricks template #%d"
+msgstr ""
+
+#. translators: %s: page title and address
+#: src/Admin/Words.php:154
+#, php-format
+msgid "Off on one page only: %s"
+msgstr ""
+
+#: src/Admin/Words.php:159
+msgid "Off on: every page of the shop"
+msgstr ""
+
+#. translators: %s: page names
+#: src/Admin/Words.php:165
+#, php-format
+msgid "Off on: every page except %s"
+msgstr ""
+
+#. translators: %s: page names
+#: src/Admin/Words.php:165
+msgid "and"
+msgstr ""
+
+#. translators: %s: page names
+#: src/Admin/Words.php:173
+#, php-format
+msgid "Off on: %s"
+msgstr ""
+
+#. translators: %s: date
+#: src/Admin/Words.php:207
+#, php-format
+msgid "Imported from Perfmatters on %s"
+msgstr ""
+
+#. translators: %s: date
+#: src/Admin/Words.php:207
+msgid "Imported from Perfmatters"
+msgstr ""
+
+#. translators: 1: person, 2: date
+#: src/Admin/Words.php:209
+#, php-format
+msgid "%1$s on %2$s"
+msgstr ""
+
+#. translators: %s: person and date
+#: src/Admin/Words.php:213
+#, php-format
+msgid "Switched off by hand by %s — not tested"
+msgstr ""
+
+#. translators: %s: person and date
+#: src/Admin/Words.php:216
+#, php-format
+msgid "Tested automatically · approved by %s"
+msgstr ""
+
+#. translators: %s: pages
+#: src/Admin/Words.php:224
+#, php-format
+msgid "switched off by hand, not tested, on: %s"
+msgstr ""
+
+#: src/Admin/Words.php:232
+msgid "The page looked different without it."
+msgstr ""
+
+#: src/Admin/Words.php:233
+msgid "Checkout didn't work the same without it."
+msgstr ""
+
+#: src/Admin/Words.php:234
+msgid "Switching it off also took away things other plugins need."
+msgstr ""
+
+#: src/Admin/Words.php:235
+msgid "The page didn't load normally without it."
+msgstr ""
+
+#: src/Admin/Words.php:236
+msgid "The page showed errors without it."
+msgstr ""
+
+#: src/Admin/Words.php:237
+msgid "Carts or logins behaved differently without it."
+msgstr ""
+
+#: src/Admin/Words.php:238
+msgid "The page sent visitors somewhere else without it."
+msgstr ""
+
+#: src/Admin/Words.php:239
+msgid "There was no page of this kind to test on."
+msgstr ""
+
+#: src/Admin/Words.php:240
+msgid "The test couldn't finish. Try testing again."
+msgstr ""
+
+#: src/Admin/Words.php:247
+msgid "The test found a difference."
+msgstr ""
+
+#. translators: %d: minutes
+#: src/Admin/Words.php:254
+#, php-format
+msgid "about %d minute"
+msgid_plural "about %d minutes"
+msgstr[0] ""
+msgstr[1] ""
+
+#: src/Admin/Words.php:266
+msgid "speeds up the site — never suggested (For experts: switch off yourself)"
+msgstr ""
+
+#: src/Admin/Words.php:267
+msgid "e-mails — never suggested (For experts: switch off yourself)"
+msgstr ""
+
+#: src/Admin/Words.php:268
+msgid "security and logins — never suggested (For experts: switch off yourself)"
+msgstr ""
+
+#: src/Admin/Words.php:269
+msgid "statistics — never suggested (For experts: switch off yourself)"
+msgstr ""
+
+#: src/Admin/Words.php:276
+msgid "never switched off"
+msgstr ""
+
+#: src/Admin/Words.php:289
+msgid "every product"
+msgstr ""
+
+#: src/Admin/Words.php:292
+msgid "every blog post"
+msgstr ""
+
+#. translators: %s: an example address
+#: src/Admin/Words.php:296
+#, php-format
+msgid "e.g. %s"
+msgstr ""
+
+#: src/Admin/Words.php:304
+msgid "Leave out the WordPress icon set for visitors"
+msgstr ""
+
+#: src/Admin/Words.php:304
+msgid "logged-in staff still get it"
+msgstr ""
+
+#: src/Admin/Words.php:305
+msgid "Leave out block-editor styling"
+msgstr ""
+
+#: src/Admin/Words.php:305
+msgid "the site is built with Bricks"
+msgstr ""
+
+#: src/Admin/Words.php:306
+msgid "Hide technical tags in the page header"
+msgstr ""
+
+#: src/Admin/Words.php:307
+msgid "Turn off RSS feeds"
+msgstr ""
+
+#: src/Admin/Words.php:308
+msgid "Stop the site pinging itself"
+msgstr ""
+
+#: src/Admin/Words.php:309
+msgid "Less background traffic in the admin"
+msgstr ""
+
+#: src/Admin/Words.php:309
+msgid "kept while editing posts, orders and in Bricks"
+msgstr ""
+
+#: src/Admin/Words.php:310
+msgid "Hide the \"WooCommerce status\" box on the dashboard"
+msgstr ""
+
+#: src/Admin/Words.php:310
+msgid "it slows the dashboard down"
+msgstr ""
+
+#: src/Admin/Words.php:311
+msgid "Block XML-RPC"
+msgstr ""
+
+#: src/Admin/Words.php:311
+msgid "an old remote-access door bots attack"
+msgstr ""
+
+#: src/Admin/Words.php:312
+#: src/Cleanup/Switches.php:36
+msgid "Clean up the database every night"
+msgstr ""
+
+#: src/Admin/Words.php:312
+msgid "at 03:30, like Perfmatters did: all post revisions, auto-drafts and trashed posts, spam and trashed comments, expired and all transients, and an optimise of non-InnoDB tables"
+msgstr ""
+
+#: src/Admin/Words.php:313
+#: src/Cleanup/Switches.php:33
+msgid "Load jQuery at the end of the page"
+msgstr ""
+
+#: src/Admin/Words.php:313
+msgid "pages show sooner; cart, checkout and account keep it in the head. Switch off if a button or form stops working"
+msgstr ""
+
+#: src/Admin/Words.php:314
+msgid "Start Google Tag Manager on the first scroll, tap or key press"
+msgstr ""
+
+#: src/Admin/Words.php:314
+msgid "or after 10 seconds; faster pages, but visitors who leave sooner without touching the page are not counted. Cart, checkout, order received and visits from ads or campaign links start it at once"
+msgstr ""
+
+#: src/Admin/Words.php:330
+msgid "Emojis, embeds and lazy-loading images are handled by Bricks."
+msgstr ""
+
+#. translators: %s: features
+#: src/Admin/Words.php:333
+#, php-format
+msgid "Bricks is not handling: %s. Switch them on in the Bricks settings."
+msgstr ""
+
+#: src/Check/FileCandidates.php:99
+msgid "Styles never used on this page (all versions and screens)."
+msgstr ""
+
+#: src/Check/FileCandidates.php:100
+msgid "Not used on load and scroll (does not prove clicks)."
+msgstr ""
+
+#: src/Check/FileCandidates.php:102
+#, php-format
+msgid "Also removes: %s."
+msgstr ""
+
+#. translators: %s: what is checked (the shop, or kinds of page)
+#: src/Check/Runner.php:214
+#, php-format
+msgid "Checking %s: starting…"
+msgstr ""
+
+#. translators: 1: what is checked (the shop, or kinds of page), 2: page loads done, 3: page loads in total
+#: src/Check/Runner.php:217
+#, php-format
+msgid "Checking %1$s: %2$d of %3$d page load"
+msgid_plural "Checking %1$s: %2$d of %3$d page loads"
+msgstr[0] ""
+msgstr[1] ""
+
+#: src/Check/Runner.php:316
+#: src/Check/Trial.php:169
+msgid "No test page for this type."
+msgstr ""
+
+#: src/Check/Runner.php:322
+msgid "No page uses this template yet (checked its own page ids and terms and the 30 newest published posts of each matching type)."
+msgstr ""
+
+#: src/Check/Runner.php:362
+msgid "The page did not render with this template: nothing was stored."
+msgstr ""
+
+#: src/Check/Runner.php:369
+msgid "Could not store the report."
+msgstr ""
+
+#: src/Check/Runner.php:619
+#, php-format
+msgid "No signs on the page; loads %d file(s): %s"
+msgstr ""
+
+#: src/Check/Runner.php:620
+msgid "No signs on the page and no files printed."
+msgstr ""
+
+#. translators: 1: position, 2: total
+#: src/Check/TestQueue.php:150
+#, php-format
+msgid "Testing %1$d of %2$d in the background — you can leave this page. Refresh to see results."
+msgstr ""
+
+#. translators: 1: number of suggestions, 2: number done
+#: src/Check/TestQueue.php:160
+#, php-format
+msgid "Testing %1$d suggestion in the background — %2$d done so far."
+msgid_plural "Testing %1$d suggestions in the background — %2$d done so far."
+msgstr[0] ""
+msgstr[1] ""
+
+#: src/Check/Trial.php:54
+msgid "This file does not appear on this page."
+msgstr ""
+
+#: src/Check/Trial.php:58
+msgid "The trial did not remove the file."
+msgstr ""
+
+#: src/Check/Trial.php:64
+#: src/Check/Trial.php:93
+#, php-format
+msgid "Also removes files from other plugins: %s"
+msgstr ""
+
+#: src/Check/Trial.php:67
+#: src/Check/Trial.php:96
+#, php-format
+msgid "HTTP status changed: %1$d → %2$d"
+msgstr ""
+
+#: src/Check/Trial.php:70
+#: src/Check/Trial.php:99
+msgid "New PHP errors."
+msgstr ""
+
+#: src/Check/Trial.php:73
+#: src/Check/Trial.php:102
+msgid "The page content changed (beyond the removed files)."
+msgstr ""
+
+#: src/Check/Trial.php:82
+#: src/Check/Trial.php:87
+msgid "The trial did not remove the plugin."
+msgstr ""
+
+#. translators: 1: cookie names before, 2: cookie names in the trial
+#: src/Check/Trial.php:123
+#, php-format
+msgid "The response sets other cookies: %1$s → %2$s"
+msgstr ""
+
+#. translators: 1: redirect target before, 2: in the trial
+#: src/Check/Trial.php:128
+#, php-format
+msgid "The redirect changed: %1$s → %2$s"
+msgstr ""
+
+#: src/Check/Trial.php:196
+msgid "The trial request failed."
+msgstr ""
+
+#: src/Check/Trial.php:198
+msgid "No trial report."
+msgstr ""
+
+#: src/Cleanup/Switches.php:22
+msgid "Embeds (oEmbed)"
+msgstr ""
+
+#: src/Cleanup/Switches.php:24
+msgid "Dashicons for visitors"
+msgstr ""
+
+#: src/Cleanup/Switches.php:25
+msgid "Block editor global styles"
+msgstr ""
+
+#: src/Cleanup/Switches.php:26
+msgid "RSD links, shortlink and WordPress version in the <head>"
+msgstr ""
+
+#: src/Cleanup/Switches.php:27
+msgid "RSS feeds (redirect to the home page)"
+msgstr ""
+
+#: src/Cleanup/Switches.php:28
+msgid "Self-pingbacks"
+msgstr ""
+
+#: src/Cleanup/Switches.php:29
+msgid "Heartbeat only when editing posts or orders and in Bricks"
+msgstr ""
+
+#: src/Cleanup/Switches.php:30
+msgid "\"WooCommerce status\" dashboard widget"
+msgstr ""
+
+#: src/Cleanup/Switches.php:31
+msgid "XML-RPC and pingbacks (xmlrpc.php returns 403)"
+msgstr ""
+
+#: src/Cleanup/Switches.php:34
+msgid "Start Google Tag Manager on the first interaction"
+msgstr ""
+
+#: src/Cli/Command.php:109
+msgid "Could not measure the page layout in the trial."
+msgstr ""
+
+#: src/Cli/Command.php:112
+msgid "Page too large to measure the full layout."
+msgstr ""
+
+#: src/Cli/Command.php:115
+msgid "Page too unstable to judge: repeat the trial."
+msgstr ""
+
+#. translators: %s: list of changed elements
+#: src/Cli/Command.php:119
+#, php-format
+msgid "The page layout changed: %s"
+msgstr ""
+
+#: src/Cli/Command.php:122
+msgid "Cart/checkout stopped working in the trial."
+msgstr ""
+
+#. translators: %s: list of changes
+#: src/Cli/Command.php:126
+#, php-format
+msgid "Checkout changed: %s"
+msgstr ""
+
+#: src/Cli/Command.php:153
+msgid "The browser test did not run."
+msgstr ""
+
+#: src/Cli/Command.php:451
+msgid "Page list is empty."
+msgstr ""
+
+#. translators: %s: page types
+#: src/Cli/Command.php:456
+#, php-format
+msgid "Pages outside the proposal: %s"
+msgstr ""
+
+#: src/Rules/Compiler.php:94
+msgid "The rule was saved but the rules file was not written, so the loader still uses the old rules."
+msgstr ""
+
+#. translators: 1: plugin directory, 2: kind of plugin (page cache, security/SSO, email/marketing tracking, analytics)
+#: src/Rules/Store.php:59
+#, php-format
+msgid "Never removed: %1$s is a %2$s plugin. What it does does not show on the page, so no check can prove it unused."
+msgstr ""
+
+#: src/Rules/Store.php:112
+msgid "Scripts can only be removed by hand: the load-time proof does not cover clicks."
+msgstr ""
+
+#: src/Rules/Store.php:136
+#: src/Rules/Store.php:270
+msgid "This file is protected."
+msgstr ""
+
+#: src/Rules/Store.php:141
+msgid "Unknown file: load a page that prints it first."
+msgstr ""
+
+#: src/Rules/Store.php:149
+#: src/Rules/Store.php:253
+msgid "This URL is not a normal page (admin, REST, login, checkout or account endpoint)."
+msgstr ""
+
+#: src/Rules/Store.php:150
+#: src/Rules/Store.php:153
+#: src/Rules/Store.php:248
+#: src/Rules/Store.php:254
+msgid "Unknown page type."
+msgstr ""
+
+#: src/Rules/Store.php:178
+msgid "Switched off by hand, protection overridden by the owner."
+msgstr ""
+
+#: src/Rules/Store.php:178
+msgid "Switched off by hand."
+msgstr ""
+
+#: src/Rules/Store.php:211
+#: src/Rules/Store.php:225
+msgid "No such rule."
+msgstr ""
+
+#: src/Rules/Store.php:242
+msgid "Unknown rule type."
+msgstr ""
+
+#: src/Rules/Store.php:245
+msgid "Invalid name."
+msgstr ""
+
+#: src/Rules/Store.php:257
+msgid "Plugins load before the template is known: use a page type or URL."
+msgstr ""
+
+#: src/Rules/Store.php:261
+msgid "Unknown site."
+msgstr ""
+
+#: src/Rules/Store.php:264
+msgid "This page type cannot be told apart by URL: use a files rule."
+msgstr ""
+
+#: src/Rules/Store.php:267
+msgid "This plugin is protected and cannot be removed."
+msgstr ""

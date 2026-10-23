@@ -1,0 +1,272 @@
+{
+ "disabled": {
+  "plugins": {
+   "wpc-composite-products": {
+    "everywhere": 1
+   },
+   "flexible-shipping": {
+    "everywhere": 1
+   },
+   "super-socializer": {
+    "everywhere": 1
+   },
+   "woocommerce-follow-up-emails": {
+    "everywhere": 1
+   },
+   "wp-loyalty-rules": {
+    "everywhere": 1
+   },
+   "pymntpl-paypal-woocommerce": {
+    "current": [
+     29
+    ]
+   }
+  },
+  "css": {
+   "wc-blocks-vendors-style": {
+    "current": [
+     29
+    ]
+   },
+   "cwginstock_bootstrap": {
+    "everywhere": 1
+   },
+   "cwginstock_frontend_css": {
+    "everywhere": 1
+   },
+   "wp-block-library": {
+    "everywhere": 1
+   },
+   "wc-blocks-style": {
+    "everywhere": 1
+   },
+   "woocommerce-product-gallery-style": {
+    "everywhere": 1
+   }
+  },
+  "js": {
+   "alg-wc-ean-variations": {
+    "everywhere": 1
+   },
+   "cwginstock_js": {
+    "everywhere": 1
+   },
+   "cwginstock_popup": {
+    "everywhere": 1
+   },
+   "sweetalert2": {
+    "everywhere": 1
+   },
+   "wc-blocks-checkout": {
+    "everywhere": 1
+   },
+   "wc-blocks-checkout-events": {
+    "everywhere": 1
+   },
+   "wc-blocks-components": {
+    "everywhere": 1
+   },
+   "wc-blocks-data-store": {
+    "everywhere": 1
+   },
+   "wc-blocks-middleware": {
+    "everywhere": 1
+   },
+   "wc-blocks-registry": {
+    "everywhere": 1
+   },
+   "wc-cart-checkout-base": {
+    "everywhere": 1
+   },
+   "wc-cart-checkout-vendors": {
+    "everywhere": 1
+   },
+   "wc-settings": {
+    "everywhere": 1
+   },
+   "wc-types": {
+    "everywhere": 1
+   },
+   "react": {
+    "current": [
+     154732
+    ]
+   },
+   "react-dom": {
+    "current": [
+     154732
+    ]
+   },
+   "react-jsx-runtime": {
+    "current": [
+     154732
+    ]
+   },
+   "wp-a11y": {
+    "current": [
+     154732
+    ]
+   },
+   "wp-api-fetch": {
+    "current": [
+     154732
+    ]
+   },
+   "wp-compose": {
+    "current": [
+     154732
+    ]
+   },
+   "wp-data": {
+    "current": [
+     154732
+    ]
+   },
+   "wp-data-controls": {
+    "current": [
+     154732
+    ]
+   },
+   "wp-deprecated": {
+    "current": [
+     154732
+    ]
+   },
+   "wp-dom": {
+    "current": [
+     154732
+    ]
+   },
+   "wp-dom-ready": {
+    "current": [
+     154732
+    ]
+   },
+   "wp-element": {
+    "current": [
+     154732
+    ]
+   },
+   "wp-escape-html": {
+    "current": [
+     154732
+    ]
+   },
+   "wp-hooks": {
+    "current": [
+     154732
+    ]
+   },
+   "wp-html-entities": {
+    "current": [
+     154732
+    ]
+   },
+   "wp-i18n": {
+    "current": [
+     154732
+    ]
+   },
+   "wp-is-shallow-equal": {
+    "current": [
+     154732
+    ]
+   },
+   "wp-keycodes": {
+    "current": [
+     154732
+    ]
+   },
+   "wp-notices": {
+    "current": [
+     154732
+    ]
+   },
+   "wp-polyfill": {
+    "current": [
+     154732
+    ]
+   },
+   "wp-primitives": {
+    "current": [
+     154732
+    ]
+   },
+   "wp-priority-queue": {
+    "current": [
+     154732
+    ]
+   },
+   "wp-private-apis": {
+    "current": [
+     154732
+    ]
+   },
+   "wp-redux-routine": {
+    "current": [
+     154732
+    ]
+   },
+   "wp-url": {
+    "current": [
+     154732
+    ]
+   },
+   "wp-warning": {
+    "current": [
+     154732
+    ]
+   }
+  }
+ },
+ "enabled": {
+  "plugins": {
+   "wpc-composite-products": {
+    "regex": "/kit/"
+   },
+   "super-socializer": {
+    "current": [
+     "160014",
+     "149197"
+    ]
+   },
+   "wp-loyalty-rules": {
+    "current": [
+     "56",
+     "54",
+     "149197"
+    ]
+   }
+  },
+  "js": {
+   "alg-wc-ean-variations": {
+    "post_types": [
+     "product"
+    ]
+   },
+   "cwginstock_js": {
+    "post_types": [
+     "product"
+    ]
+   }
+  },
+  "css": {
+   "cwginstock_bootstrap": {
+    "post_types": [
+     "product"
+    ]
+   },
+   "cwginstock_frontend_css": {
+    "post_types": [
+     "product"
+    ]
+   },
+   "wc-blocks-style": {
+    "current": [
+     "54",
+     "149197"
+    ]
+   }
+  }
+ }
+}
