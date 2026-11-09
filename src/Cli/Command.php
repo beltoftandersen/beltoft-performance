@@ -280,7 +280,8 @@ final class Command {
 	/** Signs a fresh header (it expires after 120 s) and runs the browser script once; returns the decoded result. */
 	private function run_node( array $payload, string $url, array $cookies, array $opts, string $node, string $pw ): array {
 		$argv = self::node_argv( $node, BELTOFT_PERFORMANCE_DIR . '/bin/browser-check.js', $pw, $url, $cookies, $opts );
-		$proc = proc_open( // phpcs:ignore Generic.PHP.ForbiddenFunctions.Found -- runs the browser check with node as an argv array (no shell) from WP-CLI $argv, array( 1 => array( 'pipe', 'w' ), 2 => array( 'pipe', 'w' ) ), $pipes, null, self::node_env( (array) getenv(), Signature::header_for( $payload, $url ) ) );
+		// phpcs:ignore Generic.PHP.ForbiddenFunctions.Found -- runs the browser check with node as an argv array (no shell) from WP-CLI
+		$proc = proc_open( $argv, array( 1 => array( 'pipe', 'w' ), 2 => array( 'pipe', 'w' ) ), $pipes, null, self::node_env( (array) getenv(), Signature::header_for( $payload, $url ) ) );
 		$out  = '';
 		if ( is_resource( $proc ) ) {
 			$out = (string) stream_get_contents( $pipes[1] );
