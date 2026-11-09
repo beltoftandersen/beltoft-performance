@@ -617,7 +617,8 @@ final class Runner {
 				$c[ $key ]['target']        = $key;
 				$c[ $key ]['pages'][]       = $page;
 				$c[ $key ]['why'][ $page ] = $printed
-					? sprintf( __( 'No signs on the page; loads %d file(s): %s', 'beltoft-performance' ), count( array_unique( $printed ) ), implode( ', ', array_unique( $printed ) ) )
+					/* translators: %1$d: number of files. %2$s: comma separated list of file handles. */
+					? sprintf( __( 'No signs on the page; loads %1$d file(s): %2$s', 'beltoft-performance' ), count( array_unique( $printed ) ), implode( ', ', array_unique( $printed ) ) )
 					: __( 'No signs on the page and no files printed.', 'beltoft-performance' );
 			}
 		}

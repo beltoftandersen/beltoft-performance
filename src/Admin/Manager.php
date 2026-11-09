@@ -308,15 +308,18 @@ final class Manager {
 			return __( 'The page could not be fetched.', 'beltoft-performance' );
 		}
 		if ( $status >= 300 && $status < 400 ) {
+			/* translators: HTTP status code. */
 			return sprintf( __( 'The page redirects (HTTP %d): load the address it redirects to.', 'beltoft-performance' ), $status );
 		}
 		if ( 200 !== $status ) {
+			/* translators: HTTP status code. */
 			return sprintf( __( 'The page answered HTTP %d: nothing was stored.', 'beltoft-performance' ), $status );
 		}
 		if ( null === $report ) {
 			return __( 'The page loaded but wrote no report (served from a cache, or not a normal page): nothing was stored.', 'beltoft-performance' );
 		}
 		if ( 200 !== (int) ( $report['status'] ?? 0 ) ) {
+			/* translators: HTTP status code. */
 			return sprintf( __( 'The page answered HTTP %d: nothing was stored.', 'beltoft-performance' ), (int) ( $report['status'] ?? 0 ) );
 		}
 		return null;
@@ -430,9 +433,11 @@ final class Manager {
 			$states = (array) ( $inv[ $scope ] ?? array() );
 			$report = $states['guest'] ?? ( $states ? reset( $states ) : null );
 			if ( $report ) {
+				/* translators: %1$s: check ID. %2$s: page state name. */
 				$source = sprintf( __( 'Check %1$s (%2$s state)', 'beltoft-performance' ), $last['id'], (string) ( $report['state'] ?? '' ) );
 				if ( $manual && (int) $manual['load']['time'] > (int) ( $last['time'] ?? 0 ) ) {
 					$report   = null;
+					/* translators: %s: check ID. */
 					$evidence = sprintf( __( 'Evidence badges come from check %s (same files by address), not from this load.', 'beltoft-performance' ), $last['id'] );
 				}
 			}
@@ -443,6 +448,7 @@ final class Manager {
 		}
 		if ( null === $report && $manual ) {
 			$report = $manual['report'];
+			/* translators: %1$s: date and time. %2$s: page address. */
 			$source = sprintf( __( 'Loaded %1$s from %2$s', 'beltoft-performance' ), wp_date( 'Y-m-d H:i', (int) $manual['load']['time'] ), (string) ( $manual['load']['url'] ?? '' ) );
 		}
 		$assets = array();
@@ -515,6 +521,7 @@ final class Manager {
 		if ( is_wp_error( $res ) ) {
 			return $res->get_error_message();
 		}
+		/* translators: %1$s: page address. %2$d: number of files. */
 		return sprintf( __( 'Loaded %1$s: %2$d files.', 'beltoft-performance' ), $res['url'], (int) $res['files'] );
 	}
 
@@ -546,6 +553,7 @@ final class Manager {
 				$refused[] = $r->target . ': ' . $res;
 			}
 		}
+		/* translators: %1$d: number of files switched off. %2$d: number of files switched on. */
 		$notice = sprintf( __( 'Saved: %1$d switched off, %2$d switched on.', 'beltoft-performance' ), $done['off'], $done['on'] );
 		if ( $done['off'] || $done['on'] ) {
 			$error = Compiler::change_error( true, Compiler::compile_from_store() );
@@ -554,6 +562,7 @@ final class Manager {
 			}
 		}
 		if ( $refused ) {
+			/* translators: %s: list of reasons. */
 			$notice .= ' ' . sprintf( __( 'Refused: %s', 'beltoft-performance' ), implode( '; ', $refused ) );
 		}
 		return $notice;

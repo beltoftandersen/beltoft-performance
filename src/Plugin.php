@@ -66,14 +66,14 @@ final class Plugin {
 	}
 
 	public static function init(): void {
-		// Front end: nothing but removing what is switched off (files, and the cleanup switches). No translations, no
-		// schedules, no checks — plugins themselves are already kept from loading by the must-use loader.
+		// Front end: nothing but removing what is switched off (files, and the cleanup switches). No schedules, no
+		// checks — plugins themselves are already kept from loading by the must-use loader. Translations load everywhere.
+		load_plugin_textdomain( 'beltoft-performance', false, dirname( plugin_basename( BELTOFT_PERFORMANCE_FILE ) ) . '/languages' );
 		\BeltoftPerformance\Assets\Suppressor::register();
 		\BeltoftPerformance\Cleanup\Switches::register();
 		if ( self::is_front() ) {
 			return;
 		}
-		load_plugin_textdomain( 'beltoft-performance', false, dirname( plugin_basename( BELTOFT_PERFORMANCE_FILE ) ) . '/languages' );
 		add_action( 'admin_init', static function () {
 			$dir = \BeltoftPerformance\Loader\LoaderManager::default_dir();
 			if ( 'outdated' === \BeltoftPerformance\Loader\LoaderManager::status( $dir )['state'] ) {
