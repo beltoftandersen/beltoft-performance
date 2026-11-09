@@ -176,7 +176,7 @@ final class Words {
 	/** "3 Oct" from an ISO date, '' when there is none. */
 	public static function short_date( string $iso ): string {
 		$t = '' !== $iso ? strtotime( $iso ) : false;
-		return false === $t ? '' : gmdate( 'j M', $t );
+		return false === $t ? '' : wp_date( 'j M', $t );
 	}
 
 	/**

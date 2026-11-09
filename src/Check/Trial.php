@@ -120,9 +120,11 @@ final class Trial {
 			$allowed = array_flip( array_map( static fn( $h ) => $kind . ':' . $h, self::cascade_from_assets( (array) ( $base['assets'] ?? array() ), $kind, $dir ) ) );
 			$gone    = array_values( array_filter( self::gone_handles( $base, $t, null ), static fn( $k ) => ! isset( $allowed[ $k ] ) ) );
 			if ( $gone ) {
+				/* translators: %s: comma separated list of file handles. */
 				return array( 'problem' => sprintf( __( 'Also removes files from other plugins: %s', 'beltoft-performance' ), implode( ', ', $gone ) ), 'gone' => $gone );
 			}
 			if ( ( $t['status'] ?? 0 ) !== ( $base['status'] ?? 0 ) ) {
+				/* translators: %1$d: old HTTP status code. %2$d: new HTTP status code. */
 				return array( 'problem' => sprintf( __( 'HTTP status changed: %1$d → %2$d', 'beltoft-performance' ), (int) ( $base['status'] ?? 0 ), (int) ( $t['status'] ?? 0 ) ) );
 			}
 			if ( count( (array) ( $t['errors'] ?? array() ) ) > count( (array) ( $base['errors'] ?? array() ) ) ) {
@@ -149,9 +151,11 @@ final class Trial {
 		}
 		$gone = self::gone_handles( $base, $t, $dir );
 		if ( $gone ) {
+			/* translators: %s: comma separated list of file handles. */
 			return array( 'problem' => sprintf( __( 'Also removes files from other plugins: %s', 'beltoft-performance' ), implode( ', ', $gone ) ), 'gone' => $gone );
 		}
 		if ( ( $t['status'] ?? 0 ) !== ( $base['status'] ?? 0 ) ) {
+			/* translators: %1$d: old HTTP status code. %2$d: new HTTP status code. */
 			return array( 'problem' => sprintf( __( 'HTTP status changed: %1$d → %2$d', 'beltoft-performance' ), (int) ( $base['status'] ?? 0 ), (int) ( $t['status'] ?? 0 ) ) );
 		}
 		if ( count( (array) ( $t['errors'] ?? array() ) ) > count( (array) ( $base['errors'] ?? array() ) ) ) {

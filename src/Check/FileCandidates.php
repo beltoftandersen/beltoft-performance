@@ -99,6 +99,7 @@ final class FileCandidates {
 					? __( 'Styles never used on this page (all versions and screens).', 'beltoft-performance' )
 					: __( 'Not used on load and scroll (does not prove clicks).', 'beltoft-performance' );
 				if ( $d ) {
+					/* translators: %s: comma separated list of file handles. */
 					$why .= ' ' . sprintf( __( 'Also removes: %s.', 'beltoft-performance' ), implode( ', ', array_values( $d ) ) );
 				}
 				$c[ $key ]['target']            = $key;

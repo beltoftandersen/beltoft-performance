@@ -19,7 +19,7 @@ $status  = Sorting::status( array(
 	'pages'     => count( $fetched ),
 	'failed'    => $failed,
 	'off'       => Sorting::off_count( $ctx['rules'] ),
-	'date'      => gmdate( 'j F', (int) ( $last['time'] ?? 0 ) + (int) round( (float) get_option( 'gmt_offset' ) * HOUR_IN_SECONDS ) ), // English month: the UI is English on a pt_PT site
+	'date'      => wp_date( 'j F', (int) ( $last['time'] ?? 0 ) ), // site timezone and language
 ) );
 $kept_all = array_map( 'strval', array_keys( $ctx['rejected'] ) );
 $board    = Sorting::overview( array(
