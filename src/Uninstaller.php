@@ -29,9 +29,9 @@ final class Uninstaller {
 		$it = new \RecursiveIteratorIterator( new \RecursiveDirectoryIterator( $real, \FilesystemIterator::SKIP_DOTS ), \RecursiveIteratorIterator::CHILD_FIRST );
 		foreach ( $it as $f ) {
 			if ( $f->isDir() && ! $f->isLink() ) {
-				@rmdir( $f->getPathname() );
+				@rmdir( $f->getPathname() ); // phpcs:ignore WordPress.WP.AlternativeFunctions.file_system_operations_rmdir -- removes its own empty folder; WP_Filesystem would need credentials
 			} else {
-				@unlink( $f->getPathname() );
+				wp_delete_file( $f->getPathname() );
 			}
 		}
 		return @rmdir( $real );

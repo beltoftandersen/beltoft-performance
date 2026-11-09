@@ -247,7 +247,7 @@ final class Trial {
 				$row  = array( 'page' => $page, 'state' => $state );
 				$file = Runner::dir( $id ) . '/' . self::report_name( $page, $state, $rule );
 				if ( is_file( $file ) ) {
-					@unlink( $file );
+					wp_delete_file( $file );
 				}
 				$cookies = 'cart' === $state ? $jar : array();
 				$bfile   = Runner::dir( $id ) . "/{$page}-{$state}.json";

@@ -189,7 +189,7 @@ final class Runner {
 			foreach ( array_unique( array_column( $done, 'page' ) ) as $p ) {
 				foreach ( (array) glob( self::dir( $id ) . '/usage-' . $p . '-*.json' ) as $f ) {
 					if ( is_file( $f ) ) {
-						unlink( $f );
+						wp_delete_file( $f );
 					}
 				}
 			}
@@ -296,10 +296,10 @@ final class Runner {
 		foreach ( $drop as $name ) {
 			foreach ( (array) glob( $base . '/' . $name . '/*' ) as $f ) {
 				if ( is_file( $f ) ) {
-					unlink( $f );
+					wp_delete_file( $f );
 				}
 			}
-			@rmdir( $base . '/' . $name );
+			@rmdir( $base . '/' . $name ); // phpcs:ignore WordPress.WP.AlternativeFunctions.file_system_operations_rmdir -- removes its own empty folder; WP_Filesystem would need credentials
 		}
 		if ( $drop ) {
 			$loads = (array) get_option( \BeltoftPerformance\Admin\Manager::LOADS_OPTION, array() );
@@ -405,10 +405,10 @@ final class Runner {
 		foreach ( $drop as $name ) {
 			foreach ( (array) glob( $base . '/' . $name . '/*' ) as $f ) {
 				if ( is_file( $f ) ) {
-					@unlink( $f );
+					wp_delete_file( $f );
 				}
 			}
-			@rmdir( $base . '/' . $name );
+			@rmdir( $base . '/' . $name ); // phpcs:ignore WordPress.WP.AlternativeFunctions.file_system_operations_rmdir -- removes its own empty folder; WP_Filesystem would need credentials
 		}
 		$keep = array_values( array_diff( array_filter( $names, static fn( $n ) => (bool) preg_match( '/^\d{8}-\d{6}-[0-9a-f]{6}\z/', $n ) ), $drop ) );
 		$opts = (array) $wpdb->get_col( $wpdb->prepare( "SELECT option_name FROM {$wpdb->options} WHERE option_name LIKE %s", $wpdb->esc_like( 'beltoft_performance_cart_cookies_' ) . '%' ) );

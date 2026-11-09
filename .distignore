@@ -1,0 +1,9 @@
+.git
+.gitignore
+.distignore
+.internal
+.claude
+tests
+phpunit.xml
+.phpunit.result.cache
+README.md

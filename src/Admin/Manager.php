@@ -45,7 +45,7 @@ final class Manager {
 		if ( 'not_tested' !== $trial ) {
 			return $trial;
 		}
-		$path = (string) parse_url( (string) ( $a['src'] ?? '' ), PHP_URL_PATH );
+		$path = (string) wp_parse_url( (string) ( $a['src'] ?? '' ), PHP_URL_PATH );
 		if ( '' !== $path && 'style' === $kind && isset( $usage['style'][ $path ] ) ) {
 			return 0 === (int) $usage['style'][ $path ] ? 'unused' : 'used';
 		}
@@ -330,11 +330,11 @@ final class Manager {
 		if ( '' === $src ) {
 			return '';
 		}
-		$host = parse_url( $src, PHP_URL_HOST );
-		if ( null !== $host && false !== $host && strtolower( (string) $host ) !== strtolower( (string) parse_url( $home, PHP_URL_HOST ) ) ) {
+		$host = wp_parse_url( $src, PHP_URL_HOST );
+		if ( null !== $host && false !== $host && strtolower( (string) $host ) !== strtolower( (string) wp_parse_url( $home, PHP_URL_HOST ) ) ) {
 			return '';
 		}
-		$path = (string) parse_url( $src, PHP_URL_PATH );
+		$path = (string) wp_parse_url( $src, PHP_URL_PATH );
 		if ( '' === $path || '/' !== $path[0] || str_contains( $path, '..' ) ) {
 			return '';
 		}

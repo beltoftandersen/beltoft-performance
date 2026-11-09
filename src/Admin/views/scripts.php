@@ -81,7 +81,7 @@ $label  = static function ( array $g ) use ( $headers ): string {
 		}
 		?>
 	</span>
-	<?php echo OverviewPage::button_form( 'manager_load', array( 'scope' => $scope ), $data['report'] ? __( 'Load again', 'beltoft-performance' ) : __( 'Load this page', 'beltoft-performance' ), $data['report'] ? 'button' : 'button button-primary', __( 'Opens the page as a visitor and lists everything it loads', 'beltoft-performance' ), array( 'data-bp-busy' => __( 'Loading…', 'beltoft-performance' ) ) ); // escaped inside ?>
+	<?php echo OverviewPage::button_form( 'manager_load', array( 'scope' => $scope ), $data['report'] ? __( 'Load again', 'beltoft-performance' ) : __( 'Load this page', 'beltoft-performance' ), $data['report'] ? 'button' : 'button button-primary', __( 'Opens the page as a visitor and lists everything it loads', 'beltoft-performance' ), array( 'data-bp-busy' => __( 'Loading…', 'beltoft-performance' ) ) ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- escaped inside button_form ?>
 </div>
 
 <?php if ( $groups ) : ?>

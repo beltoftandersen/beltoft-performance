@@ -62,7 +62,7 @@ $kept = Ui::dismissed_rows( $ctx['rejected'], $ctx['rejected_pages'] );
 					<li>
 						<?php /* translators: 1: name, 2: where */ ?>
 						<span><?php echo esc_html( sprintf( __( '%1$s — kept on %2$s', 'beltoft-performance' ), Words::thing_name( $d['target'], $ctx['owners'], $ctx['headers'] ), '' === $d['page'] ? __( 'every page', 'beltoft-performance' ) : Words::page_name( $d['page'] ) ) ); ?></span>
-						<?php echo OverviewPage::button_form( 'restore_dismissed', array( 'target' => $d['target'], 'page_type' => $d['page'] ), __( 'Suggest again', 'beltoft-performance' ), 'bp-link' ); // escaped inside ?>
+						<?php echo OverviewPage::button_form( 'restore_dismissed', array( 'target' => $d['target'], 'page_type' => $d['page'] ), __( 'Suggest again', 'beltoft-performance' ), 'bp-link' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- escaped inside button_form ?>
 					</li>
 				<?php endforeach; ?>
 			</ul>

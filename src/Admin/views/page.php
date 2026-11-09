@@ -66,7 +66,7 @@ $single = in_array( $scope, array( 'front', 'shop', 'cart', 'checkout', 'order_r
 <div class="bp-head"><div class="bp-head-text">
 	<h1><?php echo esc_html( $name ); ?></h1>
 	<?php if ( $is_type && isset( \BeltoftPerformance\Check\Runner::targets()[ $scope ] ) && '' !== (string) ( get_option( 'beltoft_performance_last_check', array() )['id'] ?? '' ) && ! \BeltoftPerformance\Check\Runner::progress_view( (array) get_option( \BeltoftPerformance\Check\Runner::PROGRESS, array() ), time() ) ) : ?>
-		<?php echo OverviewPage::button_form( 'check', array( 'pages' => $scope ), __( 'Check this page again', 'beltoft-performance' ), 'bp-btn bp-btn--outline', __( 'Looks at just this kind of page again, in the background; the other pages keep their results', 'beltoft-performance' ) ); // escaped inside ?>
+		<?php echo OverviewPage::button_form( 'check', array( 'pages' => $scope ), __( 'Check this page again', 'beltoft-performance' ), 'bp-btn bp-btn--outline', __( 'Looks at just this kind of page again, in the background; the other pages keep their results', 'beltoft-performance' ) ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- escaped inside button_form ?>
 	<?php endif; ?>
 	<p class="bp-intro">
 		<?php
@@ -104,7 +104,7 @@ $single = in_array( $scope, array( 'front', 'shop', 'cart', 'checkout', 'order_r
 		<?php if ( 0 === strpos( $scope, 'template:' ) ) : ?>
 			<p class="bp-muted"><?php esc_html_e( 'Plugins start before WordPress knows the template, so here a plugin can only lose its styling and code files.', 'beltoft-performance' ); ?></p>
 		<?php endif; ?>
-		<?php echo OverviewPage::button_form( 'manager_load', array( 'scope' => $scope ), $data['report'] ? __( 'Look at this page again', 'beltoft-performance' ) : __( 'Load this page', 'beltoft-performance' ), $data['report'] ? 'bp-btn bp-btn--outline' : 'bp-btn bp-btn--primary', '', array( 'data-bp-busy' => __( 'Loading…', 'beltoft-performance' ) ) ); // escaped inside ?>
+		<?php echo OverviewPage::button_form( 'manager_load', array( 'scope' => $scope ), $data['report'] ? __( 'Look at this page again', 'beltoft-performance' ) : __( 'Load this page', 'beltoft-performance' ), $data['report'] ? 'bp-btn bp-btn--outline' : 'bp-btn bp-btn--primary', '', array( 'data-bp-busy' => __( 'Loading…', 'beltoft-performance' ) ) ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- escaped inside button_form ?>
 	</section>
 <?php else : ?>
 	<?php
@@ -201,7 +201,7 @@ $single = in_array( $scope, array( 'front', 'shop', 'cart', 'checkout', 'order_r
 				<div class="bp-actions bp-rest-test">
 					<?php /* translators: 1: name, 2: page names */ ?>
 					<span><?php echo esc_html( sprintf( __( '%1$s is proven here only. To switch it off on %2$s too:', 'beltoft-performance' ), $item['name'], Words::page_list( array_values( array_diff( (array) $item['pages'], array( $scope ) ) ) ) ) ); ?></span>
-					<?php echo OverviewPage::button_form( 'trial', array( 'target' => $item['target'], 'scope' => $scope, 'where' => 'rest' ), __( 'Test on the other pages', 'beltoft-performance' ), 'bp-btn bp-btn--outline', __( 'Runs in the background. You can leave this page.', 'beltoft-performance' ) ); // escaped inside ?>
+					<?php echo OverviewPage::button_form( 'trial', array( 'target' => $item['target'], 'scope' => $scope, 'where' => 'rest' ), __( 'Test on the other pages', 'beltoft-performance' ), 'bp-btn bp-btn--outline', __( 'Runs in the background. You can leave this page.', 'beltoft-performance' ) ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- escaped inside button_form ?>
 				</div>
 			<?php endforeach; ?>
 		<?php else : ?>
@@ -253,13 +253,13 @@ $single = in_array( $scope, array( 'front', 'shop', 'cart', 'checkout', 'order_r
 							if ( in_array( $item['action'], array( 'test', 'retest' ), true ) ) {
 								$again = 'retest' === $item['action'];
 								/* translators: %s: how long */
-								echo OverviewPage::button_form( 'trial', array( 'target' => $t, 'scope' => $scope, 'where' => 'here' ), $again ? __( 'Test again on this page', 'beltoft-performance' ) : __( 'Test on this page', 'beltoft-performance' ), 'bp-btn bp-btn--outline', __( 'Runs in the background. You can leave this page.', 'beltoft-performance' ) ); // escaped inside
+								echo OverviewPage::button_form( 'trial', array( 'target' => $t, 'scope' => $scope, 'where' => 'here' ), $again ? __( 'Test again on this page', 'beltoft-performance' ) : __( 'Test on this page', 'beltoft-performance' ), 'bp-btn bp-btn--outline', __( 'Runs in the background. You can leave this page.', 'beltoft-performance' ) ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- escaped inside button_form
 								if ( $others ) {
 									/* translators: %d: number of pages */
-									echo OverviewPage::button_form( 'trial', array( 'target' => $t, 'scope' => $scope, 'where' => 'all' ), sprintf( _n( 'Test on %d page', 'Test on all %d pages', count( $item['pages'] ), 'beltoft-performance' ), count( $item['pages'] ) ), 'bp-btn bp-btn--outline', sprintf( __( 'Runs in the background (%s). You can leave this page.', 'beltoft-performance' ), $item['time'] ) ); // escaped inside
+									echo OverviewPage::button_form( 'trial', array( 'target' => $t, 'scope' => $scope, 'where' => 'all' ), sprintf( _n( 'Test on %d page', 'Test on all %d pages', count( $item['pages'] ), 'beltoft-performance' ), count( $item['pages'] ) ), 'bp-btn bp-btn--outline', sprintf( __( 'Runs in the background (%s). You can leave this page.', 'beltoft-performance' ), $item['time'] ) ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- escaped inside button_form
 								}
 							}
-							echo OverviewPage::button_form( 'reject_page', array( 'target' => $t, 'page_type' => $scope, 'scope' => $scope ), __( 'Keep it', 'beltoft-performance' ), 'bp-link', __( 'Stop suggesting it for this kind of page', 'beltoft-performance' ) ); // escaped inside
+							echo OverviewPage::button_form( 'reject_page', array( 'target' => $t, 'page_type' => $scope, 'scope' => $scope ), __( 'Keep it', 'beltoft-performance' ), 'bp-link', __( 'Stop suggesting it for this kind of page', 'beltoft-performance' ) ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- escaped inside button_form
 							?>
 						</span>
 					</div>

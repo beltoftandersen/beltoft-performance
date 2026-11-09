@@ -280,13 +280,14 @@ final class Command {
 	/** Signs a fresh header (it expires after 120 s) and runs the browser script once; returns the decoded result. */
 	private function run_node( array $payload, string $url, array $cookies, array $opts, string $node, string $pw ): array {
 		$argv = self::node_argv( $node, BELTOFT_PERFORMANCE_DIR . '/bin/browser-check.js', $pw, $url, $cookies, $opts );
+		// phpcs:ignore Generic.PHP.ForbiddenFunctions.Found -- runs the browser check with node as an argv array (no shell) from WP-CLI
 		$proc = proc_open( $argv, array( 1 => array( 'pipe', 'w' ), 2 => array( 'pipe', 'w' ) ), $pipes, null, self::node_env( (array) getenv(), Signature::header_for( $payload, $url ) ) );
 		$out  = '';
 		if ( is_resource( $proc ) ) {
 			$out = (string) stream_get_contents( $pipes[1] );
 			$err = (string) stream_get_contents( $pipes[2] );
-			fclose( $pipes[1] );
-			fclose( $pipes[2] );
+			fclose( $pipes[1] ); // phpcs:ignore WordPress.WP.AlternativeFunctions.file_system_operations_fclose -- closes a process pipe, not a file
+			fclose( $pipes[2] ); // phpcs:ignore WordPress.WP.AlternativeFunctions.file_system_operations_fclose -- closes a process pipe, not a file
 			proc_close( $proc );
 			if ( '' === trim( $out ) ) {
 				$out = $err;
@@ -425,7 +426,7 @@ final class Command {
 			}
 			$file = Runner::dir( $cid ) . '/' . Trial::report_name( $page, $state, $rule );
 			if ( is_file( $file ) ) {
-				@unlink( $file );
+				wp_delete_file( $file );
 			}
 			$start = time();
 			$with  = $run( $payload + array( 'trial' => array( $rule ) ), $url, $cookies, $mode );
@@ -715,7 +716,7 @@ final class Command {
 		$out   = array();
 		$limit = 5 * PerfmattersImport::MAX_URLS;
 		foreach ( array( 'page' => 'page', 'post' => 'post', 'product' => 'product' ) as $pt => $page ) {
-			$ids = get_posts( array( 'post_type' => $pt, 'post_status' => 'publish', 'numberposts' => $limit + 1, 'fields' => 'ids', 'orderby' => 'ID', 'order' => 'ASC', 'suppress_filters' => true ) );
+			$ids = get_posts( array( 'post_type' => $pt, 'post_status' => 'publish', 'numberposts' => $limit + 1, 'fields' => 'ids', 'orderby' => 'ID', 'order' => 'ASC', 'suppress_filters' => true ) ); // phpcs:ignore WordPressVIPMinimum.Performance.WPQueryParams.SuppressFilters_suppress_filters -- a CLI listing of every published URL must not be altered by other plugins' query filters
 			if ( count( $ids ) > $limit ) {
 				$out[ $page ] = null;
 				continue;
