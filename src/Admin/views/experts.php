@@ -80,7 +80,7 @@ $manage = static function ( string $via ) use ( $templates ): string {
 	<?php endif; ?>
 	<div class="bp-scope-head">
 		<code><?php echo esc_html( $scope ); ?></code>
-		<?php echo OverviewPage::button_form( 'manager_load', array( 'scope' => $scope ), $data['report'] ? __( 'Load again', 'beltoft-performance' ) : __( 'Load', 'beltoft-performance' ), 'button', __( 'Fetch this page as a guest and list what it prints', 'beltoft-performance' ) ); // escaped inside ?>
+		<?php echo OverviewPage::button_form( 'manager_load', array( 'scope' => $scope ), $data['report'] ? __( 'Load again', 'beltoft-performance' ) : __( 'Load', 'beltoft-performance' ), 'button', __( 'Fetch this page as a guest and list what it prints', 'beltoft-performance' ) ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- escaped inside button_form ?>
 		<span class="bp-meta"><?php echo $data['report'] ? esc_html( $data['source'] ) : esc_html__( 'Not loaded yet.', 'beltoft-performance' ); ?></span>
 	</div>
 	<?php if ( '' !== $data['evidence'] ) : ?><p class="description"><?php echo esc_html( $data['evidence'] ); ?></p><?php endif; ?>
@@ -119,7 +119,7 @@ $manage = static function ( string $via ) use ( $templates ): string {
 					<?php if ( $g['protected'] ) : ?> <span class="bp-badge bp-badge--protected"><?php echo esc_html( $badges['protected'] ); ?></span><?php endif; ?>
 					<?php if ( null !== $g['target'] && null !== Store::never_accept_reason( (string) $g['plugin'] ) ) : ?> <span class="bp-badge bp-badge--protected" title="<?php echo esc_attr( (string) Store::never_accept_reason( (string) $g['plugin'] ) ); ?>"><?php esc_html_e( 'never suggested', 'beltoft-performance' ); ?></span><?php endif; ?>
 				</th><th>
-					<?php if ( null !== $g['target'] && null !== $g['inherited'] ) : ?><?php echo $manage( (string) $g['inherited'] ); // escaped inside ?><?php else : ?><?php echo $status( $g, $g['badge'] ); // escaped inside ?><?php endif; ?>
+					<?php if ( null !== $g['target'] && null !== $g['inherited'] ) : ?><?php echo $manage( (string) $g['inherited'] ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- escaped inside button_form ?><?php else : ?><?php echo $status( $g, $g['badge'] ); // escaped inside ?><?php endif; ?>
 				</th></tr>
 				<?php foreach ( $g['files'] as $f ) : ?>
 					<tr class="<?php echo $f['protected'] ? 'bp-locked' : ''; ?>">
@@ -139,7 +139,7 @@ $manage = static function ( string $via ) use ( $templates ): string {
 							<?php if ( $f['also'] ) : ?><br><small class="bp-bad"><?php echo esc_html( sprintf( __( 'Also removes: %s', 'beltoft-performance' ), implode( ', ', $f['also'] ) ) ); ?></small><?php endif; ?>
 						</td>
 						<td class="bp-size"><?php echo null !== $f['size'] ? esc_html( size_format( $f['size'] ) ) : ( '' !== $f['src'] ? esc_html__( 'external', 'beltoft-performance' ) : '—' ); ?></td>
-						<td><?php echo null !== $f['inherited'] ? $manage( (string) $f['inherited'] ) : $status( $f, $f['badge'] ); // escaped inside ?></td>
+						<td><?php echo null !== $f['inherited'] ? $manage( (string) $f['inherited'] ) : $status( $f, $f['badge'] ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- escaped inside button_form ?></td>
 					</tr>
 				<?php endforeach; ?>
 				</tbody>

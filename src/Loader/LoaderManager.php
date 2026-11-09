@@ -16,7 +16,7 @@ final class LoaderManager {
 	}
 
 	public static function install( string $mu_dir ): bool {
-		if ( ! is_dir( $mu_dir ) || ! is_writable( $mu_dir ) ) {
+		if ( ! is_dir( $mu_dir ) || ! is_writable( $mu_dir ) ) { // phpcs:ignore WordPress.WP.AlternativeFunctions.file_system_operations_is_writable -- the mu-plugins folder is at a fixed path; WP_Filesystem would need credentials
 			return false;
 		}
 		$code = file_get_contents( self::source() );
@@ -27,19 +27,22 @@ final class LoaderManager {
 		if ( false === file_put_contents( $tmp, $code ) ) {
 			return false;
 		}
-		return rename( $tmp, $mu_dir . '/' . self::FILE );
+		return rename( $tmp, $mu_dir . '/' . self::FILE ); // phpcs:ignore WordPress.WP.AlternativeFunctions.rename_rename -- atomic install of the mu-plugin loader
 	}
 
 	public static function remove( string $mu_dir ): bool {
 		$f = $mu_dir . '/' . self::FILE;
-		return ! file_exists( $f ) || unlink( $f );
+		if ( file_exists( $f ) ) {
+			wp_delete_file( $f );
+		}
+		return ! file_exists( $f );
 	}
 
 	/** @return array{state:string,version:string} */
 	public static function status( string $mu_dir ): array {
 		$f = $mu_dir . '/' . self::FILE;
 		if ( ! file_exists( $f ) ) {
-			return array( 'state' => is_writable( $mu_dir ) ? 'missing' : 'not_writable', 'version' => '' );
+			return array( 'state' => is_writable( $mu_dir ) ? 'missing' : 'not_writable', 'version' => '' ); // phpcs:ignore WordPress.WP.AlternativeFunctions.file_system_operations_is_writable -- reports whether the fixed mu-plugins folder can be written
 		}
 		$v = self::version_of( (string) file_get_contents( $f ) );
 		return array( 'state' => version_compare( $v, self::version_of( (string) file_get_contents( self::source() ) ), '<' ) ? 'outdated' : 'installed', 'version' => $v );

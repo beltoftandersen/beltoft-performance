@@ -60,7 +60,7 @@ final class Compiler {
 		}
 
 		$dir  = dirname( $file );
-		if ( ! is_dir( $dir ) && ! @mkdir( $dir, 0755, true ) ) {
+		if ( ! is_dir( $dir ) && ! wp_mkdir_p( $dir ) ) {
 			return false;
 		}
 		if ( ! is_file( $dir . '/index.php' ) ) {
@@ -69,12 +69,12 @@ final class Compiler {
 		$tmp = $file . '.' . getmypid() . '.tmp';
 		$bytes = file_put_contents( $tmp, $php );
 		if ( false === $bytes || $bytes !== strlen( $php ) ) {
-			@unlink( $tmp );
+			wp_delete_file( $tmp );
 			return false;
 		}
-		@chmod( $tmp, 0640 );
-		if ( ! rename( $tmp, $file ) ) {
-			@unlink( $tmp );
+		@chmod( $tmp, 0640 ); // phpcs:ignore WordPress.WP.AlternativeFunctions.file_system_operations_chmod -- the compiled rules file is private to the web server
+		if ( ! rename( $tmp, $file ) ) { // phpcs:ignore WordPress.WP.AlternativeFunctions.rename_rename -- atomic replace of the compiled rules file
+			wp_delete_file( $tmp );
 			return false;
 		}
 

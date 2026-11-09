@@ -4,6 +4,8 @@
  * Description: Installed and managed by the Beltoft Performance plugin. Do not edit: removes plugins per page type before they load.
  * Version:     0.1.4
  */
+defined( 'ABSPATH' ) || exit;
+
 // Copied into wp-content/mu-plugins by BeltoftPerformance\Loader\LoaderManager. Self-contained: no plugin code,
 // no database, only the compiled rule file. Any doubt → change nothing.
 

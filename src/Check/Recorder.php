@@ -347,7 +347,7 @@ final class Recorder {
 		$name = self::file_name( (string) $report['page'], (string) $report['state'], (array) $report['trial'], (string) $report['target'] );
 		$tmp = $dir . '/' . $name . '.' . getmypid() . '.tmp';
 		if ( false !== file_put_contents( $tmp, wp_json_encode( $report ) ) ) {
-			rename( $tmp, $dir . '/' . $name ); // atomic: readers never see a half-written report
+			rename( $tmp, $dir . '/' . $name ); // phpcs:ignore WordPress.WP.AlternativeFunctions.rename_rename -- atomic: readers never see a half-written report
 		}
 	}
 }

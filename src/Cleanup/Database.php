@@ -42,7 +42,7 @@ final class Database {
 		if ( ! $dry && function_exists( 'set_time_limit' ) ) {
 			@set_time_limit( 0 );
 		}
-		$col = static fn( string $sql ): array => (array) $wpdb->get_col( $sql );
+		$col = static fn( string $sql ): array => (array) $wpdb->get_col( $sql ); // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared, PluginCheck.Security.DirectDB.UnescapedDBParameter -- fixed literal queries with no user input
 		$sets = array(
 			'post_revisions'     => $col( "SELECT ID FROM {$wpdb->posts} WHERE post_type = 'revision'" ),
 			'post_auto_drafts'   => $col( "SELECT ID FROM {$wpdb->posts} WHERE post_status = 'auto-draft'" ),
@@ -82,7 +82,7 @@ final class Database {
 		}
 		$out['tables'] = 0;
 		foreach ( $tables as $t ) {
-			$out['tables'] += (int) $wpdb->query( 'OPTIMIZE TABLE `' . str_replace( '`', '', (string) $t->t ) . '`' );
+			$out['tables'] += (int) $wpdb->query( 'OPTIMIZE TABLE `' . str_replace( '`', '', (string) $t->t ) . '`' ); // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared, PluginCheck.Security.DirectDB.UnescapedDBParameter -- table name from information_schema with backticks stripped; identifiers cannot be placeholders
 		}
 		update_option( self::LAST, array( 'time' => time() ) + $out, false );
 		return $out;

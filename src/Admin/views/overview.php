@@ -41,7 +41,7 @@ $icons = array(
 );
 ?>
 <section class="bp-card bp-status bp-status--<?php echo esc_attr( $status['tone'] ); ?>">
-	<span class="bp-status-icon" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><?php echo $icons[ $status['tone'] ]; // fixed markup ?></svg></span>
+	<span class="bp-status-icon" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><?php echo $icons[ $status['tone'] ]; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- fixed markup ?></svg></span>
 	<div class="bp-status-text">
 		<strong class="bp-status-title"><?php echo esc_html( $status['title'] ); ?></strong>
 		<span class="bp-muted"><?php echo esc_html( $status['detail'] ); ?></span>
@@ -77,11 +77,11 @@ $icons = array(
 	</div>
 	<?php
 	if ( 'repair' === $status['action'] ) {
-		echo OverviewPage::button_form( 'repair_loader', array(), __( 'Repair', 'beltoft-performance' ), 'bp-btn bp-btn--primary' ); // escaped inside
+		echo OverviewPage::button_form( 'repair_loader', array(), __( 'Repair', 'beltoft-performance' ), 'bp-btn bp-btn--primary' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- escaped inside button_form
 	} elseif ( 'check' === $status['action'] ) {
-		echo OverviewPage::button_form( 'check', array(), __( 'Check the shop', 'beltoft-performance' ), 'bp-btn bp-btn--primary bp-btn--big' ); // escaped inside
+		echo OverviewPage::button_form( 'check', array(), __( 'Check the shop', 'beltoft-performance' ), 'bp-btn bp-btn--primary bp-btn--big' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- escaped inside button_form
 	} elseif ( 'check_again' === $status['action'] && ! $checking ) {
-		echo OverviewPage::button_form( 'check', array(), __( 'Check the shop again', 'beltoft-performance' ), 'bp-btn bp-btn--outline', __( 'Looks at every kind of page again, in the background (about a minute)', 'beltoft-performance' ) ); // escaped inside
+		echo OverviewPage::button_form( 'check', array(), __( 'Check the shop again', 'beltoft-performance' ), 'bp-btn bp-btn--outline', __( 'Looks at every kind of page again, in the background (about a minute)', 'beltoft-performance' ) ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- escaped inside button_form
 		?>
 		<form method="post" action="<?php echo esc_url( admin_url( 'admin-post.php' ) ); ?>" class="bp-inline bp-check-one">
 			<input type="hidden" name="action" value="bp_check"><?php wp_nonce_field( 'bp_check' ); ?>
@@ -123,12 +123,12 @@ $icons = array(
 		printf( '<a class="bp-row" href="%s">', esc_url( Manager::tab_url( $r['type'] ) ) );
 		printf( '<span class="bp-cell bp-cell--page"><strong>%s</strong><small>%s</small></span>', esc_html( $r['name'] ), esc_html( $r['hint'] ) );
 		printf( '<span class="bp-cell" data-label="%s">%d</span>', esc_attr__( 'Plugins loading', 'beltoft-performance' ), (int) $r['loading'] );
-		printf( '<span class="bp-cell" data-label="%s">%s</span>', esc_attr__( 'Already off', 'beltoft-performance' ), $r['off'] ? (int) $r['off'] : $dash ); // int or fixed markup
-		printf( '<span class="bp-cell bp-safe-n" data-label="%s">%s</span>', esc_attr__( 'Safe to switch off', 'beltoft-performance' ), $r['safe'] ? (int) $r['safe'] : $dash );
+		printf( '<span class="bp-cell" data-label="%s">%s</span>', esc_attr__( 'Already off', 'beltoft-performance' ), $r['off'] ? (int) $r['off'] : $dash ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- an int or fixed markup
+		printf( '<span class="bp-cell bp-safe-n" data-label="%s">%s</span>', esc_attr__( 'Safe to switch off', 'beltoft-performance' ), $r['safe'] ? (int) $r['safe'] : $dash ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- an int or fixed markup
 		if ( $r['care'] ) {
 			printf( '<span class="bp-cell bp-muted" data-label="%s">%s</span>', esc_attr__( 'Your decision', 'beltoft-performance' ), esc_html__( 'Handled with care: only tested changes', 'beltoft-performance' ) );
 		} else {
-			printf( '<span class="bp-cell bp-decide-n" data-label="%s">%s</span>', esc_attr__( 'Your decision', 'beltoft-performance' ), $r['decide'] ? (int) $r['decide'] : $dash );
+			printf( '<span class="bp-cell bp-decide-n" data-label="%s">%s</span>', esc_attr__( 'Your decision', 'beltoft-performance' ), $r['decide'] ? (int) $r['decide'] : $dash ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- an int or fixed markup
 		}
 		printf( '<span class="bp-cell bp-open">%s</span></a>', esc_html__( 'Open →', 'beltoft-performance' ) );
 	};
@@ -171,7 +171,7 @@ $bad_scope = '' !== $raw_scope; // a valid scope renders the page view instead o
 $open      = $bad_scope || '1' === (string) wp_unslash( $_GET['advanced'] ?? '' );
 $picker    = static function ( string $label, string $control ): void {
 	printf( '<form method="get" action="%s" class="bp-picker"><input type="hidden" name="page" value="%s"><input type="hidden" name="tab" value="overview"><label><span>%s</span> ', esc_url( admin_url( 'options-general.php' ) ), esc_attr( OverviewPage::SLUG ), esc_html( $label ) );
-	echo $control; // built from escaped parts below
+	echo $control; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- built from escaped parts below
 	printf( '</label> <button class="bp-btn bp-btn--outline">%s</button></form>', esc_html__( 'Open', 'beltoft-performance' ) );
 };
 $select = static function ( array $options, string $empty ): string {
