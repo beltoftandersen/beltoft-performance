@@ -34,6 +34,6 @@ final class Uninstaller {
 				wp_delete_file( $f->getPathname() );
 			}
 		}
-		return @rmdir( $real );
+		return @rmdir( $real ); // phpcs:ignore WordPress.WP.AlternativeFunctions.file_system_operations_rmdir -- removes its own empty uploads folder; WP_Filesystem would need credentials
 	}
 }
