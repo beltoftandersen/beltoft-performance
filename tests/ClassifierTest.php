@@ -105,4 +105,23 @@ final class ClassifierTest extends TestCase {
 			$this->assertIsString( \BeltoftPerformance\Rules\Store::validate( new \BeltoftPerformance\Rules\Rule( 'unload:super-socializer', [ $t ] ) ) );
 		}
 	}
+
+	public function test_a_site_with_several_languages_names_each_front_page_and_the_translated_shop_pages(): void {
+		$routes = [ 'cart' => '/en/cart/', 'checkout' => '/en/checkout/', 'account' => '/en/my-account/', 'shop' => '/en/shop/', 'front' => [ '/en/', '/da/' ], 'alt' => [ 'cart' => [ '/da/kurv/' ], 'checkout' => [ '/da/kasse/' ], 'account' => [ '/da/min-konto/' ] ] ];
+		$page   = static fn( string $uri ): string => Classifier::classify( $uri, [ 'HTTP_HOST' => 'example.org' ], $routes )['page'];
+
+		$this->assertSame( 'front', $page( '/' ) );
+		$this->assertSame( 'front', $page( '/en/' ) );
+		$this->assertSame( 'front', $page( '/da/' ) );
+		$this->assertSame( 'page', $page( '/da/domaener/' ) );
+		$this->assertSame( 'checkout', $page( '/en/checkout/' ) );
+		$this->assertSame( 'checkout', $page( '/da/kasse/' ) );
+		$this->assertSame( 'checkout_endpoint', $page( '/da/kasse/order-pay/12/' ) );
+		$this->assertSame( 'order_received', $page( '/da/kasse/order-received/12/?key=wc_order_x' ) );
+		$this->assertSame( 'cart', $page( '/da/kurv/' ) );
+		$this->assertSame( 'account', $page( '/da/min-konto/' ) );
+		$this->assertSame( 'account_endpoint', $page( '/da/min-konto/hosting/' ) );
+		$this->assertSame( 'account_endpoint', $page( '/en/my-account/vps/' ) );
+		$this->assertSame( 'page_query', $page( '/da/?x=1' ) );
+	}
 }

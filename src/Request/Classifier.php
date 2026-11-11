@@ -55,22 +55,34 @@ final class Classifier {
 	/** The page type a front-controller GET's path names (query keys aside, except ?s=). */
 	private static function path_page( string $path, array $q, array $routes ): string {
 		if ( isset( $q['s'] ) ) { return 'search'; }
-		if ( '/' === $path ) { return 'front'; }
-		$is = static fn( $key ) => '' !== ( $routes[ $key ] ?? '' ) && str_starts_with( $path, strtolower( $routes[ $key ] ) );
+		// A site with several languages has one front page per language (/en/, /da/): the routes list them.
+		if ( '/' === $path || in_array( $path, array_map( 'strtolower', array_map( 'strval', (array) ( $routes['front'] ?? array() ) ) ), true ) ) { return 'front'; }
+		// A route is its own path plus the paths other languages give the same page ($routes['alt'][ key ], e.g. /da/kasse/ for the
+		// checkout). The path that matched is what "exactly this page" is measured against.
+		$is = static function ( $key ) use ( $path, $routes ) {
+			foreach ( array_merge( array( $routes[ $key ] ?? '' ), (array) ( $routes['alt'][ $key ] ?? array() ) ) as $route ) {
+				$route = strtolower( (string) $route );
+				if ( '' !== $route && str_starts_with( $path, $route ) ) { return $route; }
+			}
+			return '';
+		};
 		// Sub-endpoints (order-pay, add-payment-method, view-order…) get types no rule can target: never unloaded.
-		if ( $is( 'checkout' ) ) {
+		$hit = $is( 'checkout' );
+		if ( '' !== $hit ) {
 			$received = '/' . trim( strtolower( (string) ( $routes['order_received'] ?? '' ) ) ?: 'order-received', '/' ) . '/';
-			if ( strtolower( $routes['checkout'] ) === $path ) { return 'checkout'; }
+			if ( $hit === $path ) { return 'checkout'; }
 			return ( str_contains( $path, $received ) || str_contains( $path, '/order-received/' ) ) ? 'order_received' : 'checkout_endpoint';
 		}
-		if ( $is( 'cart' ) ) { return 'cart'; }
-		if ( $is( 'account' ) ) { return strtolower( $routes['account'] ) === $path ? 'account' : 'account_endpoint'; }
-		if ( $is( 'cat' ) ) { return 'archive_cat'; }
-		if ( $is( 'brand' ) ) { return 'archive_brand'; }
-		if ( $is( 'tag' ) ) { return 'archive_tag'; }
-		if ( $is( 'blog' ) ) { return 'blog'; }
-		if ( $is( 'shop' ) ) {
-			$rest = substr( $path, strlen( strtolower( $routes['shop'] ) ) );
+		if ( '' !== $is( 'cart' ) ) { return 'cart'; }
+		$hit = $is( 'account' );
+		if ( '' !== $hit ) { return $hit === $path ? 'account' : 'account_endpoint'; }
+		if ( '' !== $is( 'cat' ) ) { return 'archive_cat'; }
+		if ( '' !== $is( 'brand' ) ) { return 'archive_brand'; }
+		if ( '' !== $is( 'tag' ) ) { return 'archive_tag'; }
+		if ( '' !== $is( 'blog' ) ) { return 'blog'; }
+		$hit = $is( 'shop' );
+		if ( '' !== $hit ) {
+			$rest = substr( $path, strlen( $hit ) );
 			return ( '' === $rest || preg_match( '#^page/\d+/$#', $rest ) ) ? 'shop' : 'product';
 		}
 		return 'page';

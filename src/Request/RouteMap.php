@@ -16,7 +16,19 @@ final class RouteMap {
 
 	/** The routes, built once per request. */
 	public static function build(): array {
-		return self::$memo ??= self::compute();
+		if ( null === self::$memo ) {
+			/**
+			 * The routes the classifier works from. A site with several languages adds what the permalinks of one language cannot
+			 * tell: 'front' => the front page of each language ( array( '/en/', '/da/' ) ) and 'alt' => the same page's path in
+			 * the other languages, by route key ( array( 'checkout' => array( '/da/kasse/' ), 'cart' => ..., 'account' => ...,
+			 * 'shop' => ... ) ). Paths start and end with a slash. Stored in the rule file on save: save the rules again after a change.
+			 *
+			 * @param array $routes Routes read from the permalink setup.
+			 */
+			$routes     = function_exists( 'apply_filters' ) ? apply_filters( 'beltoft_performance_routes', self::compute() ) : self::compute();
+			self::$memo = is_array( $routes ) ? $routes : self::compute();
+		}
+		return self::$memo;
 	}
 
 	private static function compute(): array {
